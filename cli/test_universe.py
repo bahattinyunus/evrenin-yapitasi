@@ -11,6 +11,9 @@ from universe_info import (
     margolus_levitin_speed_limit,
     bell_chsh_correlation,
     chsh_inequality,
+    kerr_black_hole_properties,
+    ryu_takayanagi_entropy,
+    landauer_stream_analysis,
     SOLAR_MASS,
     KB,
     HBAR,
@@ -65,6 +68,42 @@ class TestUniversePhysics(unittest.TestCase):
         res = chsh_inequality(0.0, math.pi / 4, math.pi / 8, 3 * math.pi / 8)
         self.assertTrue(res["violates_local_realism"])
         self.assertAlmostEqual(res["S"], 2.0 * math.sqrt(2.0), places=3)
+
+    def test_kerr_black_hole_properties(self):
+        # Kerr black hole with a = 0.9 * rg
+        kerr = kerr_black_hole_properties(SOLAR_MASS, 0.9)
+        sbh = black_hole_properties(SOLAR_MASS)
+        # Outer horizon is compressed relative to Schwarzschild
+        self.assertLess(kerr["r_outer_horizon_m"], sbh["schwarzschild_radius_m"])
+        # Inner horizon is smaller than outer horizon
+        self.assertLess(kerr["r_inner_horizon_m"], kerr["r_outer_horizon_m"])
+        # Ergosurface radius at equator equals 2 * rg (Schwarzschild radius)
+        self.assertAlmostEqual(kerr["r_ergo_equator_m"], sbh["schwarzschild_radius_m"], places=1)
+        # Penrose efficiency should be positive and less than extremal limit (~29.3%)
+        self.assertGreater(kerr["penrose_efficiency_percent"], 0.0)
+        self.assertLess(kerr["penrose_efficiency_percent"], 29.3)
+
+    def test_ryu_takayanagi_entropy(self):
+        # Symmetric around pi
+        rt_half = ryu_takayanagi_entropy(math.pi)
+        self.assertGreater(rt_half["entanglement_entropy"], 0.0)
+        self.assertGreater(rt_half["bits_equivalent"], 0.0)
+        # Angle pi/2 vs 3pi/2 should have equal entropy due to symmetry
+        rt1 = ryu_takayanagi_entropy(math.pi / 2)
+        rt2 = ryu_takayanagi_entropy(3 * math.pi / 2)
+        self.assertAlmostEqual(rt1["entanglement_entropy"], rt2["entanglement_entropy"], places=4)
+
+    def test_landauer_stream_analysis(self):
+        # All zeros has 0 Shannon entropy -> 0 dissipation to erase
+        land_zero = landauer_stream_analysis("00000000", 300.0)
+        self.assertEqual(land_zero["shannon_entropy"], 0.0)
+        self.assertEqual(land_zero["total_dissipated_joules"], 0.0)
+
+        # Balanced 50/50 stream has max entropy = 1.0 bit
+        land_balanced = landauer_stream_analysis("01010101", 300.0)
+        self.assertAlmostEqual(land_balanced["shannon_entropy"], 1.0, places=4)
+        expected_joules = 8 * KB * 300.0 * math.log(2.0)
+        self.assertAlmostEqual(land_balanced["total_dissipated_joules"], expected_joules, places=25)
 
 
 if __name__ == "__main__":

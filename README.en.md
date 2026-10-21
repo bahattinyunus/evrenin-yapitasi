@@ -1,8 +1,8 @@
 # 🌌 The Building Block of the Universe: From Matter to Bit
 
-[![Web App](https://img.shields.io/badge/Web_App-8_Interactive_Labs-00f2fe?style=for-the-badge&logo=html5)](index.html)
+[![Web App](https://img.shields.io/badge/Web_App-10_Interactive_Labs-00f2fe?style=for-the-badge&logo=html5)](index.html)
 [![Python Tests](https://img.shields.io/badge/Python_Tests-Passing-06d6a0?style=for-the-badge&logo=python)](cli/test_universe.py)
-[![Physics & Info Theory](https://img.shields.io/badge/Physics-It_From_Bit-9d4edd?style=for-the-badge)](docs/)
+[![Physics & Info Theory](https://img.shields.io/badge/Physics-It_From_Bit_%26_Qubit-9d4edd?style=for-the-badge)](docs/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-ffd166?style=for-the-badge)](LICENSE)
 
 > *"The cosmos is within us. We are made of star-stuff. We are a way for the cosmos to know itself."*  
@@ -17,7 +17,7 @@
 
 **"What is the universe made of?"** is the primary ontological and physical question humanity has pursued for over 2,600 years.
 
-This platform documents the evolution of our understanding of reality across three grand paradigms: from **"Matter"** (Atom/Substance) to **"Energy and Fields"** (Quantum Field Theory, $E=mc^2$), and finally to **"Information and Computation"** (Digital Physics, *It from Bit*, Holographic Principle, Simulation Hypothesis). It features **8 real-time interactive simulation labs**, **24 chronological historical milestones**, a **Cosmic Conceptual Glossary**, a **10-question Quiz**, mathematical equations, academic papers, and a Python computational CLI tool.
+This platform documents the evolution of our understanding of reality across three grand paradigms: from **"Matter"** (Atom/Substance) to **"Energy and Fields"** (Quantum Field Theory, $E=mc^2$), and finally to **"Information and Computation"** (Digital Physics, *It from Bit*, *It from Qubit*, Holographic Principle, Simulation Hypothesis). It features **10 real-time interactive simulation labs**, **28 chronological historical milestones**, a **24-term Cosmic Conceptual Glossary**, a **15-question Quiz**, **6 Interactive Theory Chapters**, mathematical equations, and a **10-module Python computational CLI tool**.
 
 ---
 
@@ -49,18 +49,20 @@ flowchart LR
 
 ---
 
-## 🔬 8 Interactive Simulation Laboratories
+## 🔬 10 Interactive Simulation Laboratories
 
-The portal features 8 real-time simulators:
+The portal features 10 real-time simulators:
 
 1. **Atomic Models & Orbitals:** Democritus solid sphere, Bohr quantized orbits, and Schrödinger probability cloud with photon excitation trigger.
 2. **Quantum Double Slit & Collapse:** Photon wave interference patterns and observer-induced wavefunction collapse into particle paths.
 3. **Konrad Zuse & Stephen Wolfram Cellular Automata:** Rule 30 (deterministic chaos), Rule 110 (Turing complete), Rule 90 (Sierpinski fractal), and Rule 184 (traffic/flow dynamics).
-4. **Qubit & Bloch Sphere:** 3D state vector $|\Psi\rangle = \alpha|0\rangle + \beta|1\rangle$, Hadamard $H$, Pauli $X, Z$ quantum logic gates, and probability bars.
-5. **Black Hole & Holography Calculator:** Presets (Solar mass, Cygnus X-1, Sgr A*, M87*, TON 618), Schwarzschild radius, event horizon area, Bekenstein-Hawking entropy, Planck pixel count, and storage capacity in Terabytes.
+4. **Qubit & Bloch Sphere Universal Gates:** 3D state vector $|\Psi\rangle = \cos(\theta/2)|0\rangle + e^{i\phi}\sin(\theta/2)|1\rangle$, Hadamard ($H$), Pauli ($X, Y, Z$), Phase ($S, T$) gates, Bloch coordinates $(x, y, z)$, and probability bars.
+5. **Black Hole, Kerr Ergosphere & Holography Calculator:** Presets (Solar mass, Cygnus X-1, Sgr A*, M87*, TON 618), Kerr spin parameter ($a/M$), outer/inner horizons, ergosphere, Penrose process rotational energy efficiency ($\le 29.3\%$), Bekenstein-Hawking entropy, and real-time canvas visualization.
 6. **Nick Bostrom Simulation Trilemma:** Bayesian simulation probability calculation $P(\text{Sim}) = \frac{f_p N_I}{f_p N_I + 1}$ with interactive civilizational parameters.
 7. **Quantum Entanglement & Bell Inequality (EPR):** Alice and Bob polarizer angle controls ($\theta_A, \theta_B$), quantum correlation $E(\theta_A, \theta_B) = -\cos(2(\theta_A - \theta_B))$, and CHSH inequality violation test ($S = 2\sqrt{2} \approx 2.828 > 2$).
 8. **Cosmic Scales & Seth Lloyd Information Hierarchy:** Interactive explorer from Planck scale ($10^{-35}$ m) to the Observable Universe ($10^{26}$ m) with masses and information capacities in bits.
+9. **Landauer Bit Erasure & Maxwell's Demon Simulator:** Bitstream Shannon entropy $H(X)$, ambient temperature ($2.7\text{ K} - 1000\text{ K}$), single-bit Landauer limit ($k_B T \ln 2$), dissipated heat ($\Delta Q$), and interactive Maxwell's Demon particle chamber animation.
+10. **AdS/CFT Holography & Ryu-Takayanagi Entanglement Network ("It from Qubit"):** Poincaré disk hyperbolic AdS bulk tensor network, boundary CFT subsystem angle ($\theta_A$), central charge ($c$), minimal geodesic curve ($\gamma_A$), and Ryu-Takayanagi entanglement entropy $S_A = \frac{\text{Area}(\gamma_A)}{4G_N}$.
 
 ---
 

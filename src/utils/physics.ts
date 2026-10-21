@@ -136,6 +136,73 @@ export function evaluateWolframRule(rule: number, left: number, center: number, 
 }
 
 /**
+ * Kerr Rotating Black Hole properties (Outer/Inner Horizons, Ergosphere, Penrose Efficiency)
+ */
+export function calculateKerrBlackHole(massKg: number, spinRatio: number = 0.9): {
+  rPlus: number;
+  rMinus: number;
+  rErgoEquator: number;
+  area: number;
+  entropyJK: number;
+  bits: number;
+  penroseEnergyJoules: number;
+  penroseEfficiency: number;
+} {
+  const spin = Math.max(0, Math.min(0.9999, spinRatio));
+  const rg = (CONSTANTS.G * massKg) / (CONSTANTS.c ** 2);
+  const a = spin * rg;
+  const disc = Math.max(0, rg ** 2 - a ** 2);
+  const rPlus = rg + Math.sqrt(disc);
+  const rMinus = rg - Math.sqrt(disc);
+  const rErgoEquator = 2 * rg;
+  const area = 4 * Math.PI * (rPlus ** 2 + a ** 2);
+  const entropyJK = (CONSTANTS.kB * (CONSTANTS.c ** 3) * area) / (4 * CONSTANTS.G * CONSTANTS.hbar);
+  const bits = entropyJK / (CONSTANTS.kB * Math.LN2);
+  const mIrr = Math.sqrt((rPlus ** 2 + a ** 2) / 4) * (CONSTANTS.c ** 2) / CONSTANTS.G;
+  const penroseEnergyJoules = Math.max(0, (massKg - mIrr) * (CONSTANTS.c ** 2));
+  const penroseEfficiency = (1 - mIrr / massKg) * 100;
+
+  return {
+    rPlus,
+    rMinus,
+    rErgoEquator,
+    area,
+    entropyJK,
+    bits,
+    penroseEnergyJoules,
+    penroseEfficiency
+  };
+}
+
+/**
+ * AdS3/CFT2 Ryu-Takayanagi Holographic Entanglement Entropy
+ */
+export function calculateRyuTakayanagi(
+  angleRad: number,
+  centralCharge: number = 3.0,
+  adsRadius: number = 1.0,
+  uvCutoff: number = 0.01
+): {
+  thetaDeg: number;
+  geodesicLength: number;
+  entropy: number;
+  bits: number;
+} {
+  const theta = Math.max(0.001, Math.min(2 * Math.PI - 0.001, angleRad));
+  const eps = Math.max(1e-5, uvCutoff);
+  const arg = Math.max(1.0001, ((2 * adsRadius) / eps) * Math.sin(theta / 2));
+  const entropy = (centralCharge / 3) * Math.log(arg);
+  const geodesicLength = 2 * Math.log(arg);
+  const bits = entropy / Math.LN2;
+  return {
+    thetaDeg: (theta * 180) / Math.PI,
+    geodesicLength,
+    entropy,
+    bits
+  };
+}
+
+/**
  * Format numbers into compact readable scientific notation
  */
 export function formatScientific(num: number, digits: number = 2): string {

@@ -49,6 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
       renderTimeline();
       renderComparisonMatrix();
       renderGlossary();
+      renderArticles();
       renderQuiz();
       initOrResumeLab(activeLab);
       if (window.CosmicAudio) {
@@ -261,13 +262,31 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Render Cosmic Glossary
+  const glossarySearchInput = document.getElementById('glossary-search');
   function renderGlossary() {
     if (!glossaryContainer || !window.APP_DATA.glossary) return;
     glossaryContainer.innerHTML = '';
 
+    const searchQ = (glossarySearchInput ? glossarySearchInput.value : '').toLowerCase().trim();
+
     const terms = window.APP_DATA.glossary.filter(item => {
-      return activeGlossaryCategory === 'all' || item.category === activeGlossaryCategory;
+      const catMatch = activeGlossaryCategory === 'all' || item.category === activeGlossaryCategory;
+      const tTr = (item.term || '').toLowerCase();
+      const tEn = (item.termEn || '').toLowerCase();
+      const dTr = (item.defTr || '').toLowerCase();
+      const dEn = (item.defEn || '').toLowerCase();
+      const searchMatch = !searchQ || tTr.includes(searchQ) || tEn.includes(searchQ) || dTr.includes(searchQ) || dEn.includes(searchQ);
+      return catMatch && searchMatch;
     });
+
+    if (terms.length === 0) {
+      glossaryContainer.innerHTML = `
+        <div class="col-span-full py-10 text-center text-slate-400">
+          <p class="text-sm">${currentLang === 'tr' ? 'Aramanızla eşleşen kavram bulunamadı.' : 'No glossary terms found matching your search.'}</p>
+        </div>
+      `;
+      return;
+    }
 
     const catBadgeColors = {
       ancient: 'bg-amber-500/20 text-amber-300 border-amber-500/30',
@@ -310,7 +329,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Glossary Filter Buttons
+  // Glossary Filter Buttons & Search
   glossaryFilterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       glossaryFilterBtns.forEach(b => b.classList.remove('bg-cyan-500/20', 'text-quantum-cyan', 'border-quantum-cyan/50'));
@@ -319,6 +338,65 @@ document.addEventListener('DOMContentLoaded', () => {
       renderGlossary();
     });
   });
+  if (glossarySearchInput) {
+    glossarySearchInput.addEventListener('input', () => renderGlossary());
+  }
+
+  // Render Academic Theory & Article Compendium (6 Chapters)
+  function renderArticles() {
+    const container = document.getElementById('theory-cards-container');
+    if (!container || !window.APP_DATA.articles) return;
+    container.innerHTML = '';
+
+    const colorMap = {
+      amber: { badge: 'text-amber-400 bg-amber-500/10 border-amber-500/20', border: 'hover:border-amber-500/40', foot: 'text-amber-300' },
+      purple: { badge: 'text-purple-400 bg-purple-500/10 border-purple-500/20', border: 'hover:border-purple-500/40', foot: 'text-purple-300' },
+      cyan: { badge: 'text-cyan-400 bg-cyan-500/10 border-cyan-500/20', border: 'hover:border-cyan-500/40', foot: 'text-cyan-300' },
+      emerald: { badge: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20', border: 'hover:border-emerald-500/40', foot: 'text-emerald-300' },
+      pink: { badge: 'text-pink-400 bg-pink-500/10 border-pink-500/20', border: 'hover:border-pink-500/40', foot: 'text-pink-300' },
+      gold: { badge: 'text-amber-300 bg-amber-500/10 border-amber-400/20', border: 'hover:border-amber-400/40', foot: 'text-amber-200' }
+    };
+
+    window.APP_DATA.articles.forEach(art => {
+      const st = colorMap[art.badgeColor] || colorMap.cyan;
+      const card = document.createElement('div');
+      card.className = `glass-panel p-6 rounded-2xl border border-slate-800 ${st.border} transition-all cursor-pointer transform hover:-translate-y-1 flex flex-col justify-between group`;
+
+      const title = currentLang === 'tr' ? art.titleTr : art.titleEn;
+      const summary = currentLang === 'tr' ? art.summaryTr : art.summaryEn;
+      const pages = currentLang === 'tr' ? art.pagesTr : art.pagesEn;
+
+      card.innerHTML = `
+        <div>
+          <span class="text-xs font-mono px-2.5 py-1 rounded-full border ${st.badge}">${art.path}</span>
+          <h3 class="text-lg font-bold text-white mt-3 mb-2 group-hover:text-quantum-cyan transition-colors">${title}</h3>
+          <p class="text-xs text-slate-300 leading-relaxed mb-4">${summary}</p>
+        </div>
+        <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs font-mono ${st.foot} font-semibold">
+          <span>${pages}</span>
+          <span>${currentLang === 'tr' ? 'Makaleyi Oku →' : 'Read Chapter →'}</span>
+        </div>
+      `;
+
+      card.addEventListener('click', () => {
+        openModal({
+          year: pages,
+          thinker: art.path,
+          title: art.titleTr,
+          titleEn: art.titleEn,
+          fullDescription: art.contentTr,
+          fullDescriptionEn: art.contentEn,
+          formula: art.formula,
+          impact: currentLang === 'tr' ? 'Tam metin repo içindeki ' + art.path + ' dosyasında yer almaktadır.' : 'Full markdown document is available at ' + art.path,
+          impactEn: 'Full markdown document is available at ' + art.path,
+          keyConcepts: [art.path, 'Teori Kütüphanesi', 'Akademik İnceleme']
+        });
+        if (window.CosmicAudio) window.CosmicAudio.playQuantumPing(680);
+      });
+
+      container.appendChild(card);
+    });
+  }
 
   // Interactive Quiz Engine
   let quizCurrentIndex = 0;
@@ -477,6 +555,8 @@ document.addEventListener('DOMContentLoaded', () => {
     else if (labKey === 'bostrom') initBostromLab();
     else if (labKey === 'entanglement') initEntanglementLab();
     else if (labKey === 'scales') initScalesLab();
+    else if (labKey === 'landauer') initLandauerLab();
+    else if (labKey === 'adscft') initAdSCFTLab();
   }
 
   // LAB 1: Atom & Quantum Orbitals Lab
@@ -755,24 +835,37 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // LAB 4: Qubit & Bloch Sphere
+  // LAB 4: Qubit & Bloch Sphere (6 Universal Quantum Gates)
   let qubitCanvas, qubitCtx, theta = 0, phi = 0;
   function initQubitLab() {
     qubitCanvas = document.getElementById('qubit-canvas');
     if (!qubitCanvas) return;
     qubitCtx = qubitCanvas.getContext('2d');
     qubitCanvas.width = qubitCanvas.parentElement.clientWidth || 400;
-    qubitCanvas.height = 300;
+    qubitCanvas.height = 260;
 
-    const btnH = document.getElementById('gate-h');
-    const btnX = document.getElementById('gate-x');
-    const btnZ = document.getElementById('gate-z');
-    const btnReset = document.getElementById('gate-reset');
+    const gates = [
+      { id: 'gate-h', code: 'H' },
+      { id: 'gate-x', code: 'X' },
+      { id: 'gate-y', code: 'Y' },
+      { id: 'gate-z', code: 'Z' },
+      { id: 'gate-s', code: 'S' },
+      { id: 'gate-t', code: 'T' },
+      { id: 'gate-reset', code: 'RESET' }
+    ];
 
-    if (btnH) btnH.onclick = () => { theta = Math.PI / 2; updateBloch(); };
-    if (btnX) btnX.onclick = () => { theta = theta === 0 ? Math.PI : 0; updateBloch(); };
-    if (btnZ) btnZ.onclick = () => { phi += Math.PI; updateBloch(); };
-    if (btnReset) btnReset.onclick = () => { theta = 0; phi = 0; updateBloch(); };
+    gates.forEach(g => {
+      const btn = document.getElementById(g.id);
+      if (btn) {
+        btn.onclick = () => {
+          const next = window.PhysicsEngine.applyQubitGate(g.code, theta, phi);
+          theta = next.theta;
+          phi = next.phi;
+          updateBloch();
+          if (window.CosmicAudio) window.CosmicAudio.playQuantumPing(g.code === 'RESET' ? 360 : 620);
+        };
+      }
+    });
 
     function updateBloch() {
       if (!qubitCtx) return;
@@ -780,39 +873,64 @@ document.addEventListener('DOMContentLoaded', () => {
       const h = qubitCanvas.height;
       const cx = w / 2;
       const cy = h / 2;
-      const r = 90;
+      const r = 85;
 
       qubitCtx.clearRect(0, 0, w, h);
 
       // Draw sphere circle & equator ellipse
       qubitCtx.beginPath();
       qubitCtx.arc(cx, cy, r, 0, Math.PI * 2);
-      qubitCtx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
+      qubitCtx.strokeStyle = 'rgba(255, 255, 255, 0.22)';
+      qubitCtx.lineWidth = 1.5;
       qubitCtx.stroke();
 
       qubitCtx.beginPath();
       qubitCtx.ellipse(cx, cy, r, r * 0.35, 0, 0, Math.PI * 2);
-      qubitCtx.strokeStyle = 'rgba(0, 242, 254, 0.3)';
+      qubitCtx.strokeStyle = 'rgba(0, 242, 254, 0.35)';
       qubitCtx.stroke();
 
-      // Axes
+      // Z, X, Y axes
       qubitCtx.beginPath();
-      qubitCtx.moveTo(cx, cy - r - 15);
-      qubitCtx.lineTo(cx, cy + r + 15);
-      qubitCtx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
+      qubitCtx.moveTo(cx, cy - r - 12);
+      qubitCtx.lineTo(cx, cy + r + 12);
+      qubitCtx.moveTo(cx - r - 12, cy);
+      qubitCtx.lineTo(cx + r + 12, cy);
+      qubitCtx.strokeStyle = 'rgba(255, 255, 255, 0.25)';
+      qubitCtx.lineWidth = 1;
       qubitCtx.stroke();
 
-      // Labels |0> and |1>
+      // Labels |0>, |1>, |+>, |->
       qubitCtx.fillStyle = '#00f2fe';
-      qubitCtx.font = '13px monospace';
+      qubitCtx.font = '12px Fira Code, monospace';
       qubitCtx.textAlign = 'center';
-      qubitCtx.fillText('|0⟩', cx, cy - r - 20);
-      qubitCtx.fillText('|1⟩', cx, cy + r + 25);
+      qubitCtx.fillText('|0⟩', cx, cy - r - 16);
+      qubitCtx.fillText('|1⟩', cx, cy + r + 24);
+      qubitCtx.fillStyle = '#94a3b8';
+      qubitCtx.fillText('|+⟩', cx + r + 20, cy + 4);
+      qubitCtx.fillText('|-⟩', cx - r - 20, cy + 4);
 
-      // State vector (Bloch coordinates)
-      const vx = cx + r * Math.sin(theta) * Math.cos(phi);
-      const vy = cy - r * Math.cos(theta);
+      // Bloch vector (x, y, z)
+      const bx = Math.sin(theta) * Math.cos(phi);
+      const by = Math.sin(theta) * Math.sin(phi);
+      const bz = Math.cos(theta);
 
+      // Project onto 2D canvas with slight 3D perspective from y
+      const vx = cx + r * (bx * 0.9 + by * 0.35);
+      const vy = cy - r * bz + r * 0.35 * by * 0.5;
+
+      // Dashed shadow on equator
+      const eqX = cx + r * (bx * 0.9 + by * 0.35);
+      const eqY = cy + r * 0.35 * by * 0.5;
+      qubitCtx.beginPath();
+      qubitCtx.moveTo(cx, cy);
+      qubitCtx.lineTo(eqX, eqY);
+      qubitCtx.lineTo(vx, vy);
+      qubitCtx.strokeStyle = 'rgba(157, 78, 221, 0.45)';
+      qubitCtx.setLineDash([3, 3]);
+      qubitCtx.stroke();
+      qubitCtx.setLineDash([]);
+
+      // State vector line
       qubitCtx.beginPath();
       qubitCtx.moveTo(cx, cy);
       qubitCtx.lineTo(vx, vy);
@@ -823,7 +941,7 @@ document.addEventListener('DOMContentLoaded', () => {
       qubitCtx.beginPath();
       qubitCtx.arc(vx, vy, 6, 0, Math.PI * 2);
       qubitCtx.fillStyle = '#f72585';
-      qubitCtx.shadowBlur = 10;
+      qubitCtx.shadowBlur = 12;
       qubitCtx.shadowColor = '#f72585';
       qubitCtx.fill();
       qubitCtx.shadowBlur = 0;
@@ -831,12 +949,24 @@ document.addEventListener('DOMContentLoaded', () => {
       // Update state display text
       const prob0 = (Math.cos(theta / 2) ** 2) * 100;
       const prob1 = (Math.sin(theta / 2) ** 2) * 100;
+      const degTheta = Math.round((theta * 180) / Math.PI);
+      const degPhi = Math.round((phi * 180) / Math.PI);
+
       const stateTxt = document.getElementById('qubit-state-text');
+      const coordsTxt = document.getElementById('qubit-coords-text');
+      const prob0Label = document.getElementById('qubit-prob0-label');
+      const prob1Label = document.getElementById('qubit-prob1-label');
       const probBar0 = document.getElementById('qubit-prob0-bar');
       const probBar1 = document.getElementById('qubit-prob1-bar');
+
       if (stateTxt) {
-        stateTxt.textContent = `|Ψ⟩ = ${Math.cos(theta / 2).toFixed(2)}|0⟩ + ${Math.sin(theta / 2).toFixed(2)}|1⟩`;
+        stateTxt.textContent = `|Ψ⟩ = ${Math.cos(theta / 2).toFixed(2)}|0⟩ + ${Math.sin(theta / 2).toFixed(2)} e^(i·${degPhi}°)|1⟩`;
       }
+      if (coordsTxt) {
+        coordsTxt.textContent = `Bloch (x, y, z) = (${bx.toFixed(2)}, ${by.toFixed(2)}, ${bz.toFixed(2)}) | θ = ${degTheta}°, φ = ${degPhi}°`;
+      }
+      if (prob0Label) prob0Label.textContent = `P(|0⟩): %${prob0.toFixed(1)}`;
+      if (prob1Label) prob1Label.textContent = `P(|1⟩): %${prob1.toFixed(1)}`;
       if (probBar0) probBar0.style.width = `${prob0}%`;
       if (probBar1) probBar1.style.width = `${prob1}%`;
     }
@@ -844,31 +974,62 @@ document.addEventListener('DOMContentLoaded', () => {
     updateBloch();
   }
 
-  // LAB 5: Black Hole Holographic Calculator
+  // LAB 5: Black Hole, Kerr Ergosphere & Holographic Calculator
+  let bhCanvas, bhCtx, bhCurrentSpin = 0, bhCurrentMass = 1, bhAnimAngle = 0;
   function initBlackHoleLab() {
     const massSlider = document.getElementById('bh-mass-slider');
+    const spinSlider = document.getElementById('bh-spin-slider');
     const presetSelect = document.getElementById('bh-preset-select');
     const massValEl = document.getElementById('bh-mass-val');
+    const spinValEl = document.getElementById('bh-spin-val');
     const rsEl = document.getElementById('bh-rs-val');
     const areaEl = document.getElementById('bh-area-val');
     const entropyEl = document.getElementById('bh-entropy-val');
     const bitsEl = document.getElementById('bh-bits-val');
+    const penroseEl = document.getElementById('bh-penrose-val');
     const tempEl = document.getElementById('bh-temp-val');
 
-    function updateFromSlider() {
-      if (!massSlider) return;
-      const mSun = parseFloat(massSlider.value);
-      renderValues(mSun);
+    bhCanvas = document.getElementById('bh-canvas');
+    if (bhCanvas) {
+      bhCtx = bhCanvas.getContext('2d');
+      bhCanvas.width = bhCanvas.parentElement.clientWidth || 360;
+      bhCanvas.height = 176;
     }
 
-    function renderValues(mSun) {
-      if (massValEl) massValEl.textContent = `${mSun.toLocaleString()} M☉ (${(mSun * 1.989e30).toExponential(2)} kg)`;
-      const info = window.PhysicsEngine.calculateBlackHoleInfo(mSun * 1.98847e30);
+    function updateFromSliders() {
+      const mSun = massSlider ? parseFloat(massSlider.value) : 1;
+      const spin = spinSlider ? parseFloat(spinSlider.value) : 0;
+      renderValues(mSun, spin);
+    }
 
-      if (rsEl) rsEl.textContent = `${(info.rs / 1000).toLocaleString('tr-TR', { maximumFractionDigits: 2 })} km`;
-      if (areaEl) areaEl.textContent = `${window.PhysicsEngine.formatSciNum(info.area)} m²`;
-      if (entropyEl) entropyEl.textContent = `${window.PhysicsEngine.formatSciNum(info.entropyJK)} J/K`;
-      if (bitsEl) bitsEl.textContent = `${window.PhysicsEngine.formatSciNum(info.bits)} bit (~${window.PhysicsEngine.formatSciNum(info.terabytes)} TB)`;
+    function renderValues(mSun, spin) {
+      bhCurrentMass = mSun;
+      bhCurrentSpin = spin;
+      const massKg = mSun * 1.98847e30;
+
+      if (massValEl) massValEl.textContent = `${mSun.toLocaleString('tr-TR')} M☉ (${massKg.toExponential(2)} kg)`;
+      if (spinValEl) {
+        spinValEl.textContent = spin === 0
+          ? '0.00 (Schwarzschild Statik)'
+          : `${spin.toFixed(2)} (Kerr Dönen Kara Delik)`;
+      }
+
+      const info = window.PhysicsEngine.calculateBlackHoleInfo(massKg);
+      const kerr = window.PhysicsEngine.calculateKerrBlackHole(massKg, spin);
+
+      if (rsEl) {
+        const rPlusKm = (kerr.rPlus / 1000).toLocaleString('tr-TR', { maximumFractionDigits: 2 });
+        const rErgoKm = (kerr.rErgoEquator / 1000).toLocaleString('tr-TR', { maximumFractionDigits: 2 });
+        rsEl.textContent = spin > 0 ? `r₊=${rPlusKm} km (Ergo: ${rErgoKm} km)` : `${rPlusKm} km`;
+      }
+      if (areaEl) areaEl.textContent = `${window.PhysicsEngine.formatSciNum(kerr.area)} m²`;
+      if (entropyEl) entropyEl.textContent = `${window.PhysicsEngine.formatSciNum(kerr.entropyJK)} J/K`;
+      if (bitsEl) bitsEl.textContent = `${window.PhysicsEngine.formatSciNum(kerr.bits)} bit`;
+      if (penroseEl) {
+        penroseEl.textContent = spin > 0
+          ? `%${kerr.penroseEfficiency.toFixed(2)} (${window.PhysicsEngine.formatSciNum(kerr.penroseEnergyJoules)} J)`
+          : '%0.00 (Dönme Yok)';
+      }
       if (tempEl) tempEl.textContent = `${window.PhysicsEngine.formatSciNum(info.hawkingTempK)} K`;
     }
 
@@ -876,13 +1037,85 @@ document.addEventListener('DOMContentLoaded', () => {
       presetSelect.onchange = (e) => {
         const val = parseFloat(e.target.value);
         if (massSlider && val <= 100) massSlider.value = val;
-        renderValues(val);
+        const spin = spinSlider ? parseFloat(spinSlider.value) : 0;
+        renderValues(val, spin);
       };
     }
 
-    if (massSlider) {
-      massSlider.oninput = updateFromSlider;
-      updateFromSlider();
+    if (massSlider) massSlider.oninput = updateFromSliders;
+    if (spinSlider) spinSlider.oninput = updateFromSliders;
+    updateFromSliders();
+
+    if (!window._bhAnimStarted) {
+      window._bhAnimStarted = true;
+      function animateBlackHole() {
+        if (activeLab === 'blackhole' && bhCtx && bhCanvas) {
+          const w = bhCanvas.width;
+          const h = bhCanvas.height;
+          const cx = w / 2;
+          const cy = h / 2;
+          bhCtx.clearRect(0, 0, w, h);
+          bhAnimAngle += 0.015 + bhCurrentSpin * 0.08;
+
+          const baseR = 36;
+          const rPlusRatio = (1 + Math.sqrt(Math.max(0, 1 - bhCurrentSpin ** 2))) / 2;
+          const rHorizon = baseR * Math.max(0.55, rPlusRatio);
+          const rErgoX = baseR * 1.15;
+          const rErgoY = rHorizon;
+
+          // Relativistic accretion disk glow
+          const grad = bhCtx.createRadialGradient(cx, cy, rHorizon * 0.8, cx, cy, baseR * 2.1);
+          grad.addColorStop(0, 'rgba(0, 0, 0, 1)');
+          grad.addColorStop(0.45, 'rgba(247, 37, 133, 0.55)');
+          grad.addColorStop(0.75, 'rgba(0, 242, 254, 0.25)');
+          grad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+          bhCtx.fillStyle = grad;
+          bhCtx.beginPath();
+          bhCtx.arc(cx, cy, baseR * 2.1, 0, Math.PI * 2);
+          bhCtx.fill();
+
+          // Frame-dragging swirl streams when spinning
+          if (bhCurrentSpin > 0.02) {
+            for (let i = 0; i < 6; i++) {
+              const a = bhAnimAngle + (i * Math.PI) / 3;
+              bhCtx.beginPath();
+              bhCtx.arc(cx, cy, rErgoX + 6 + (i % 2) * 5, a, a + 0.65);
+              bhCtx.strokeStyle = 'rgba(0, 242, 254, 0.5)';
+              bhCtx.lineWidth = 1.5;
+              bhCtx.stroke();
+            }
+            // Ergosphere boundary (oblate spheroid)
+            bhCtx.beginPath();
+            bhCtx.ellipse(cx, cy, rErgoX, rErgoY, 0, 0, Math.PI * 2);
+            bhCtx.strokeStyle = '#9d4edd';
+            bhCtx.setLineDash([4, 3]);
+            bhCtx.lineWidth = 1.5;
+            bhCtx.stroke();
+            bhCtx.setLineDash([]);
+          }
+
+          // Event Horizon Shadow (Black Core)
+          bhCtx.beginPath();
+          bhCtx.arc(cx, cy, rHorizon, 0, Math.PI * 2);
+          bhCtx.fillStyle = '#02040a';
+          bhCtx.fill();
+          bhCtx.strokeStyle = '#00f2fe';
+          bhCtx.lineWidth = 2;
+          bhCtx.stroke();
+
+          // Labels
+          bhCtx.fillStyle = '#e2e8f0';
+          bhCtx.font = '10px Fira Code, monospace';
+          bhCtx.textAlign = 'center';
+          bhCtx.fillText(
+            bhCurrentSpin > 0 ? `Kerr (a/M=${bhCurrentSpin.toFixed(2)}) + Ergoküre` : 'Schwarzschild Olay Ufku (r_s)',
+            cx,
+            h - 8
+          );
+        }
+        requestAnimationFrame(animateBlackHole);
+      }
+      animateBlackHole();
     }
   }
 
@@ -1059,10 +1292,313 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // LAB 9: Landauer Bit Erasure & Maxwell's Demon Thermodynamic Simulator
+  let landauerCanvas, landauerCtx, landauerHeatWaves = [], landauerCurrentBits = '0110101100110101';
+  function initLandauerLab() {
+    const bitInput = document.getElementById('landauer-bitstream-input');
+    const tempSlider = document.getElementById('landauer-temp-slider');
+    const tempVal = document.getElementById('landauer-temp-val');
+    const shannonVal = document.getElementById('landauer-shannon-val');
+    const singleVal = document.getElementById('landauer-single-val');
+    const totalVal = document.getElementById('landauer-total-val');
+    const randomBtn = document.getElementById('landauer-random-btn');
+    const eraseBtn = document.getElementById('landauer-erase-btn');
+
+    landauerCanvas = document.getElementById('landauer-canvas');
+    if (landauerCanvas) {
+      landauerCtx = landauerCanvas.getContext('2d');
+      landauerCanvas.width = landauerCanvas.parentElement.clientWidth || 360;
+      landauerCanvas.height = 200;
+    }
+
+    function updateLandauer() {
+      const rawBits = bitInput ? bitInput.value.replace(/[^01]/g, '') || '0' : '01101011';
+      landauerCurrentBits = rawBits;
+      const tempK = tempSlider ? parseFloat(tempSlider.value) : 300;
+
+      if (tempVal) {
+        let label = '';
+        if (tempK < 5) label = ' (Kozmik Mikrodalga Arka Plan)';
+        else if (tempK >= 290 && tempK <= 310) label = ' (Oda Sıcaklığı)';
+        tempVal.textContent = `${tempK.toFixed(1)} K${label}`;
+      }
+
+      const res = window.PhysicsEngine.calculateLandauerStream(rawBits, tempK);
+      if (shannonVal) shannonVal.textContent = `${res.shannonEntropy.toFixed(4)} bit (${res.bitCount} bit dizi)`;
+      if (singleVal) singleVal.textContent = `${window.PhysicsEngine.formatSciNum(res.singleBitEnergy)} J`;
+      if (totalVal) {
+        totalVal.textContent = `${window.PhysicsEngine.formatSciNum(res.totalJoules)} J (${window.PhysicsEngine.formatSciNum(res.totalEv)} eV)`;
+      }
+    }
+
+    if (randomBtn && bitInput) {
+      randomBtn.onclick = () => {
+        let s = '';
+        for (let i = 0; i < 16; i++) s += Math.random() > 0.5 ? '1' : '0';
+        bitInput.value = s;
+        updateLandauer();
+        if (window.CosmicAudio) window.CosmicAudio.playQuantumPing(580);
+      };
+    }
+
+    if (eraseBtn && bitInput) {
+      eraseBtn.onclick = () => {
+        updateLandauer();
+        // Spawn thermal dissipation wave in canvas
+        landauerHeatWaves.push({ r: 15, alpha: 1.0 });
+        bitInput.value = '0'.repeat(Math.min(16, Math.max(8, landauerCurrentBits.length)));
+        updateLandauer();
+        if (window.CosmicAudio) window.CosmicAudio.playQuantumPing(320);
+      };
+    }
+
+    if (bitInput) bitInput.oninput = updateLandauer;
+    if (tempSlider) tempSlider.oninput = updateLandauer;
+    updateLandauer();
+
+    if (!window._landauerAnimStarted) {
+      window._landauerAnimStarted = true;
+      const molecules = Array.from({ length: 24 }, () => ({
+        x: Math.random() * 320 + 20,
+        y: Math.random() * 110 + 20,
+        vx: (Math.random() - 0.5) * 3,
+        vy: (Math.random() - 0.5) * 3,
+        hot: Math.random() > 0.5
+      }));
+
+      function renderLandauerCanvas() {
+        if (activeLab === 'landauer' && landauerCtx && landauerCanvas) {
+          const w = landauerCanvas.width;
+          const h = landauerCanvas.height;
+          landauerCtx.clearRect(0, 0, w, h);
+
+          // Chamber divider (Maxwell's Demon gate)
+          const midX = w / 2;
+          landauerCtx.strokeStyle = 'rgba(148, 163, 184, 0.35)';
+          landauerCtx.setLineDash([5, 5]);
+          landauerCtx.beginPath();
+          landauerCtx.moveTo(midX, 10);
+          landauerCtx.lineTo(midX, h - 52);
+          landauerCtx.stroke();
+          landauerCtx.setLineDash([]);
+
+          // Molecules
+          molecules.forEach(m => {
+            m.x += m.vx;
+            m.y += m.vy;
+            if (m.x < 12 || m.x > w - 12) m.vx *= -1;
+            if (m.y < 12 || m.y > h - 58) m.vy *= -1;
+
+            landauerCtx.beginPath();
+            landauerCtx.arc(m.x, m.y, 4, 0, Math.PI * 2);
+            landauerCtx.fillStyle = m.hot ? '#f72585' : '#00f2fe';
+            landauerCtx.fill();
+          });
+
+          // Draw bit memory cells at bottom
+          const bits = landauerCurrentBits.slice(0, 16).split('');
+          const cellW = Math.min(20, (w - 24) / Math.max(1, bits.length));
+          const startX = (w - bits.length * cellW) / 2;
+          const cellY = h - 38;
+
+          bits.forEach((b, idx) => {
+            const x = startX + idx * cellW;
+            landauerCtx.fillStyle = b === '1' ? 'rgba(0, 242, 254, 0.25)' : 'rgba(30, 41, 59, 0.8)';
+            landauerCtx.strokeStyle = b === '1' ? '#00f2fe' : '#475569';
+            landauerCtx.lineWidth = 1;
+            landauerCtx.fillRect(x, cellY, cellW - 2, 24);
+            landauerCtx.strokeRect(x, cellY, cellW - 2, 24);
+
+            landauerCtx.fillStyle = b === '1' ? '#00f2fe' : '#94a3b8';
+            landauerCtx.font = '11px Fira Code, monospace';
+            landauerCtx.textAlign = 'center';
+            landauerCtx.fillText(b, x + (cellW - 2) / 2, cellY + 16);
+          });
+
+          // Thermal dissipation waves on erasure
+          for (let i = landauerHeatWaves.length - 1; i >= 0; i--) {
+            const hw = landauerHeatWaves[i];
+            hw.r += 3.5;
+            hw.alpha -= 0.025;
+            if (hw.alpha <= 0) {
+              landauerHeatWaves.splice(i, 1);
+              continue;
+            }
+            landauerCtx.beginPath();
+            landauerCtx.arc(midX, cellY, hw.r, Math.PI, Math.PI * 2);
+            landauerCtx.strokeStyle = `rgba(247, 37, 133, ${hw.alpha})`;
+            landauerCtx.lineWidth = 2.5;
+            landauerCtx.stroke();
+          }
+        }
+        requestAnimationFrame(renderLandauerCanvas);
+      }
+      renderLandauerCanvas();
+    }
+  }
+
+  // LAB 10: AdS/CFT & Ryu-Takayanagi Holographic Entanglement Simulator
+  let rtCanvas, rtCtx;
+  function initAdSCFTLab() {
+    const angleSlider = document.getElementById('rt-angle-slider');
+    const chargeSlider = document.getElementById('rt-charge-slider');
+    const angleVal = document.getElementById('rt-angle-val');
+    const chargeVal = document.getElementById('rt-charge-val');
+    const geodesicVal = document.getElementById('rt-geodesic-val');
+    const entropyVal = document.getElementById('rt-entropy-val');
+    const qubitsVal = document.getElementById('rt-qubits-val');
+
+    rtCanvas = document.getElementById('rt-canvas');
+    if (rtCanvas) {
+      rtCtx = rtCanvas.getContext('2d');
+      rtCanvas.width = rtCanvas.parentElement.clientWidth || 360;
+      rtCanvas.height = 240;
+    }
+
+    function updateRT() {
+      const deg = angleSlider ? parseFloat(angleSlider.value) : 120;
+      const c = chargeSlider ? parseFloat(chargeSlider.value) : 12;
+      const rad = (deg * Math.PI) / 180;
+
+      if (angleVal) angleVal.textContent = `${deg}°`;
+      if (chargeVal) chargeVal.textContent = c.toFixed(1);
+
+      const rt = window.PhysicsEngine.calculateRyuTakayanagi(rad, c, 1.0, 0.01);
+      if (geodesicVal) geodesicVal.textContent = rt.geodesicLength.toFixed(3);
+      if (entropyVal) entropyVal.textContent = `${rt.entropy.toFixed(3)} k_B`;
+      if (qubitsVal) qubitsVal.textContent = `${rt.bits.toFixed(2)} Qubit`;
+
+      drawPoincareDisk(deg, c);
+    }
+
+    function drawPoincareDisk(deg, c) {
+      if (!rtCtx || !rtCanvas) return;
+      const w = rtCanvas.width;
+      const h = rtCanvas.height;
+      const cx = w / 2;
+      const cy = h / 2;
+      const R = Math.min(w, h) * 0.42;
+
+      rtCtx.clearRect(0, 0, w, h);
+
+      // Draw hyperbolic MERA-like tensor network web inside AdS bulk
+      const rings = [0.35, 0.68, 1.0];
+      const nodesPerRing = [6, 12, 24];
+      const ringCoords = [];
+
+      rings.forEach((ratio, rIdx) => {
+        const count = nodesPerRing[rIdx];
+        const r = R * ratio;
+        const pts = [];
+        for (let i = 0; i < count; i++) {
+          const a = (i * 2 * Math.PI) / count;
+          pts.push({ x: cx + r * Math.cos(a), y: cy + r * Math.sin(a) });
+        }
+        ringCoords.push(pts);
+      });
+
+      rtCtx.strokeStyle = 'rgba(148, 163, 184, 0.16)';
+      rtCtx.lineWidth = 1;
+      for (let rIdx = 0; rIdx < ringCoords.length - 1; rIdx++) {
+        const inner = ringCoords[rIdx];
+        const outer = ringCoords[rIdx + 1];
+        inner.forEach((p1, i) => {
+          const p2 = outer[(i * 2) % outer.length];
+          const p3 = outer[(i * 2 + 1) % outer.length];
+          rtCtx.beginPath();
+          rtCtx.moveTo(p1.x, p1.y);
+          rtCtx.lineTo(p2.x, p2.y);
+          rtCtx.moveTo(p1.x, p1.y);
+          rtCtx.lineTo(p3.x, p3.y);
+          rtCtx.stroke();
+        });
+      }
+
+      // Draw full AdS boundary circle (CFT boundary)
+      rtCtx.beginPath();
+      rtCtx.arc(cx, cy, R, 0, Math.PI * 2);
+      rtCtx.strokeStyle = 'rgba(255, 255, 255, 0.28)';
+      rtCtx.lineWidth = 2;
+      rtCtx.stroke();
+
+      // Boundary subsystem A arc centered at top (-PI/2)
+      const halfAngle = ((deg * Math.PI) / 180) / 2;
+      const a1 = -Math.PI / 2 - halfAngle;
+      const a2 = -Math.PI / 2 + halfAngle;
+
+      rtCtx.beginPath();
+      rtCtx.arc(cx, cy, R, a1, a2);
+      rtCtx.strokeStyle = '#00f2fe';
+      rtCtx.lineWidth = 4;
+      rtCtx.shadowBlur = 10;
+      rtCtx.shadowColor = '#00f2fe';
+      rtCtx.stroke();
+      rtCtx.shadowBlur = 0;
+
+      // Endpoints of subsystem A on boundary
+      const x1 = cx + R * Math.cos(a1);
+      const y1 = cy + R * Math.sin(a1);
+      const x2 = cx + R * Math.cos(a2);
+      const y2 = cy + R * Math.sin(a2);
+
+      // Ryu-Takayanagi Minimal Geodesic Curve gamma_A in Poincaré disk
+      const depth = Math.cos(halfAngle);
+      const ctrlX = cx;
+      const ctrlY = cy - R * depth * 0.45;
+
+      rtCtx.beginPath();
+      rtCtx.moveTo(x1, y1);
+      rtCtx.quadraticCurveTo(ctrlX, ctrlY, x2, y2);
+      rtCtx.strokeStyle = '#f72585';
+      rtCtx.lineWidth = 3;
+      rtCtx.shadowBlur = 12;
+      rtCtx.shadowColor = '#f72585';
+      rtCtx.stroke();
+      rtCtx.shadowBlur = 0;
+
+      // Endpoint dots
+      [
+        { x: x1, y: y1 },
+        { x: x2, y: y2 }
+      ].forEach(pt => {
+        rtCtx.beginPath();
+        rtCtx.arc(pt.x, pt.y, 4.5, 0, Math.PI * 2);
+        rtCtx.fillStyle = '#00f2fe';
+        rtCtx.fill();
+      });
+
+      // Labels
+      rtCtx.fillStyle = '#00f2fe';
+      rtCtx.font = '11px Fira Code, monospace';
+      rtCtx.textAlign = 'center';
+      rtCtx.fillText(`Sınır CFT Bölgesi A (${deg}°)`, cx, cy - R - 10);
+      rtCtx.fillStyle = '#f72585';
+      rtCtx.fillText('γ_A (Minimal Yüzey)', cx, ctrlY + 16);
+    }
+
+    if (angleSlider) angleSlider.oninput = updateRT;
+    if (chargeSlider) chargeSlider.oninput = updateRT;
+    updateRT();
+  }
+
   // Initial App Render
   renderTimeline();
   renderComparisonMatrix();
   renderGlossary();
+  renderArticles();
   renderQuiz();
   initOrResumeLab('atom');
+
+  // Trigger KaTeX auto-render when ready
+  window.addEventListener('load', () => {
+    if (window.renderMathInElement) {
+      window.renderMathInElement(document.body, {
+        delimiters: [
+          { left: '$$', right: '$$', display: true },
+          { left: '$', right: '$', display: false }
+        ],
+        throwOnError: false
+      });
+    }
+  });
 });

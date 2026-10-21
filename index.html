@@ -39,6 +39,11 @@
 
   <!-- Custom CSS -->
   <link rel="stylesheet" href="css/style.css" />
+
+  <!-- KaTeX LaTeX Math Rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
 </head>
 <body class="bg-cosmos-950 text-slate-100 font-sans min-h-screen relative selection:bg-cyan-500/30 selection:text-white">
 
@@ -121,7 +126,7 @@
           <div class="text-xs text-slate-400 font-mono mt-1" data-tr="Evrenin Bilgi Kapasitesi" data-en="Universe Info Capacity">Bilgi Kapasitesi</div>
         </div>
         <div class="glass-panel p-4 rounded-xl border border-slate-800">
-          <div class="text-xl md:text-2xl font-bold text-quantum-emerald font-mono">8 Lab</div>
+          <div class="text-xl md:text-2xl font-bold text-quantum-emerald font-mono">10 Lab</div>
           <div class="text-xs text-slate-400 font-mono mt-1" data-tr="İnteraktif Simülatör" data-en="Interactive Simulators">İnteraktif Lab</div>
         </div>
       </div>
@@ -182,9 +187,9 @@
     <section id="lab" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
       <div class="text-center max-w-3xl mx-auto mb-10">
         <div class="text-xs font-mono text-quantum-pink uppercase tracking-wider mb-1" data-tr="Deneysel ve Görsel Simülasyonlar" data-en="Interactive Simulation Hub">Deneysel ve Görsel Simülasyonlar</div>
-        <h2 class="text-3xl font-extrabold text-white mb-4" data-tr="İnteraktif Fizik & Enformasyon Laboratuvarı" data-en="Interactive Physics & Information Lab">İnteraktif Fizik & Enformasyon Laboratuvarı</h2>
-        <p class="text-slate-300 text-sm md:text-base" data-tr="Farklı tarihsel modelleri, kuantum olgularını ve dijital evren tezlerini 8 canlı simülatör üzerinden deneyimleyin." data-en="Experiment with historical models, quantum phenomena, and digital universe hypotheses in 8 real-time simulators.">
-          Farklı tarihsel modelleri, kuantum olgularını ve dijital evren tezlerini 8 canlı simülatör üzerinden deneyimleyin.
+        <h2 class="text-3xl font-extrabold text-white mb-4" data-tr="İnteraktif Fizik & Enformasyon Laboratuvarı (10 Lab)" data-en="Interactive Physics & Information Lab (10 Labs)">İnteraktif Fizik & Enformasyon Laboratuvarı (10 Lab)</h2>
+        <p class="text-slate-300 text-sm md:text-base" data-tr="Farklı tarihsel modelleri, kuantum olgularını, kara delik termodinamiğini ve dijital evren tezlerini 10 canlı simülatör üzerinden deneyimleyin." data-en="Experiment with historical models, quantum phenomena, black hole thermodynamics, and digital universe hypotheses in 10 real-time simulators.">
+          Farklı tarihsel modelleri, kuantum olgularını, kara delik termodinamiğini ve dijital evren tezlerini 10 canlı simülatör üzerinden deneyimleyin.
         </p>
       </div>
 
@@ -194,10 +199,12 @@
         <button class="lab-nav-btn px-3.5 py-2 rounded-xl text-xs md:text-sm font-semibold border border-slate-700 hover:border-cyan-400 text-slate-300 transition-all" data-lab="doubleslit" data-tr="2. Çift Yarık Deneyi" data-en="2. Double Slit">2. Çift Yarık Deneyi</button>
         <button class="lab-nav-btn px-3.5 py-2 rounded-xl text-xs md:text-sm font-semibold border border-slate-700 hover:border-cyan-400 text-slate-300 transition-all" data-lab="cellular" data-tr="3. Hücresel Otomat (Wolfram)" data-en="3. Cellular Automata">3. Hücresel Otomat (Wolfram)</button>
         <button class="lab-nav-btn px-3.5 py-2 rounded-xl text-xs md:text-sm font-semibold border border-slate-700 hover:border-cyan-400 text-slate-300 transition-all" data-lab="qubit" data-tr="4. Qubit & Bloch Küresi" data-en="4. Qubit & Bloch Sphere">4. Qubit & Bloch Küresi</button>
-        <button class="lab-nav-btn px-3.5 py-2 rounded-xl text-xs md:text-sm font-semibold border border-slate-700 hover:border-cyan-400 text-slate-300 transition-all" data-lab="blackhole" data-tr="5. Kara Delik & Holografi" data-en="5. Black Hole Holography">5. Kara Delik & Holografi</button>
+        <button class="lab-nav-btn px-3.5 py-2 rounded-xl text-xs md:text-sm font-semibold border border-slate-700 hover:border-cyan-400 text-slate-300 transition-all" data-lab="blackhole" data-tr="5. Kara Delik & Kerr" data-en="5. Black Hole & Kerr">5. Kara Delik & Kerr</button>
         <button class="lab-nav-btn px-3.5 py-2 rounded-xl text-xs md:text-sm font-semibold border border-slate-700 hover:border-cyan-400 text-slate-300 transition-all" data-lab="bostrom" data-tr="6. Simülasyon Olasılığı" data-en="6. Simulation Probability">6. Simülasyon Olasılığı</button>
         <button class="lab-nav-btn px-3.5 py-2 rounded-xl text-xs md:text-sm font-semibold border border-slate-700 hover:border-cyan-400 text-slate-300 transition-all" data-lab="entanglement" data-tr="7. Dolanıklık & Bell (EPR)" data-en="7. Entanglement & Bell">7. Dolanıklık & Bell (EPR)</button>
         <button class="lab-nav-btn px-3.5 py-2 rounded-xl text-xs md:text-sm font-semibold border border-slate-700 hover:border-cyan-400 text-slate-300 transition-all" data-lab="scales" data-tr="8. Kozmik Ölçekler & Bilgi" data-en="8. Cosmic Scales & Info">8. Kozmik Ölçekler & Bilgi</button>
+        <button class="lab-nav-btn px-3.5 py-2 rounded-xl text-xs md:text-sm font-semibold border border-slate-700 hover:border-cyan-400 text-slate-300 transition-all" data-lab="landauer" data-tr="9. Landauer & Maxwell İblisi" data-en="9. Landauer & Maxwell Demon">9. Landauer & Maxwell İblisi</button>
+        <button class="lab-nav-btn px-3.5 py-2 rounded-xl text-xs md:text-sm font-semibold border border-slate-700 hover:border-cyan-400 text-slate-300 transition-all" data-lab="adscft" data-tr="10. AdS/CFT & Ryu-Takayanagi" data-en="10. AdS/CFT & Ryu-Takayanagi">10. AdS/CFT & Ryu-Takayanagi</button>
       </div>
 
       <!-- LAB 1: Atom & Orbitals -->
@@ -272,22 +279,25 @@
       <!-- LAB 4: Qubit & Bloch Sphere -->
       <div id="lab-qubit" class="lab-view glass-panel p-6 rounded-2xl max-w-4xl mx-auto border border-slate-800 hidden">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
-          <div class="bg-slate-950/80 rounded-xl p-4 flex items-center justify-center">
+          <div class="bg-slate-950/80 rounded-xl p-4 flex flex-col items-center justify-center border border-slate-800/80">
             <canvas id="qubit-canvas" class="w-full h-64"></canvas>
+            <div id="qubit-coords-text" class="text-xs font-mono text-slate-400 mt-2">
+              Bloch (x, y, z) = (0.00, 0.00, 1.00) | θ = 0°, φ = 0°
+            </div>
           </div>
           <div>
-            <h3 class="text-lg font-bold text-white mb-2" data-tr="Qubit & Kuantum Kapıları Simülatörü" data-en="Qubit & Quantum Logic Gates">Qubit & Kuantum Kapıları Simülatörü</h3>
-            <p class="text-xs text-slate-300 mb-4" data-tr="Klasik 0 veya 1 bitinin ötesinde, süperpozisyon durum vektörünü Bloch küresi üzerinde manipüle edin." data-en="Manipulate quantum superposition states on the 3D Bloch sphere representation.">
-              Klasik 0 veya 1 bitinin ötesinde, süperpozisyon durum vektörünü Bloch küresi üzerinde manipüle edin.
+            <h3 class="text-lg font-bold text-white mb-2" data-tr="Qubit & Evrensel Kuantum Kapıları Simülatörü" data-en="Qubit & Universal Quantum Logic Gates">Qubit & Evrensel Kuantum Kapıları Simülatörü</h3>
+            <p class="text-xs text-slate-300 mb-4" data-tr="Klasik 0 veya 1 bitinin ötesinde, süperpozisyon durum vektörünü ve faz açısını Bloch küresi üzerinde kuantum mantık kapılarıyla manipüle edin." data-en="Manipulate quantum superposition states and relative phase on the 3D Bloch sphere using unitary quantum gates.">
+              Klasik 0 veya 1 bitinin ötesinde, süperpozisyon durum vektörünü ve faz açısını Bloch küresi üzerinde kuantum mantık kapılarıyla manipüle edin.
             </p>
             <div id="qubit-state-text" class="p-3 bg-slate-900 rounded-xl font-mono text-xs text-quantum-cyan border border-cyan-500/20 mb-4">
-              |Ψ⟩ = 1.00|0⟩ + 0.00|1⟩
+              |Ψ⟩ = 1.00|0⟩ + 0.00 e^(i·0°)|1⟩
             </div>
             
             <div class="space-y-2 mb-4">
               <div class="flex justify-between text-xs text-slate-400 font-mono">
-                <span>P(|0⟩):</span>
-                <span>P(|1⟩):</span>
+                <span id="qubit-prob0-label">P(|0⟩): %100.0</span>
+                <span id="qubit-prob1-label">P(|1⟩): %0.0</span>
               </div>
               <div class="w-full bg-slate-800 h-3 rounded-full overflow-hidden flex">
                 <div id="qubit-prob0-bar" class="bg-quantum-cyan h-full transition-all duration-300" style="width: 100%"></div>
@@ -295,23 +305,28 @@
               </div>
             </div>
 
-            <div class="grid grid-cols-4 gap-2">
+            <div class="grid grid-cols-4 gap-2 mb-2">
               <button id="gate-h" class="p-2 bg-slate-800 border border-slate-700 hover:border-cyan-400 rounded-lg text-xs font-mono text-white">H (Hadamard)</button>
-              <button id="gate-x" class="p-2 bg-slate-800 border border-slate-700 hover:border-cyan-400 rounded-lg text-xs font-mono text-white">X (NOT)</button>
-              <button id="gate-z" class="p-2 bg-slate-800 border border-slate-700 hover:border-cyan-400 rounded-lg text-xs font-mono text-white">Z (Phase)</button>
-              <button id="gate-reset" class="p-2 bg-red-950/40 border border-red-800/60 rounded-lg text-xs font-mono text-red-300">Reset</button>
+              <button id="gate-x" class="p-2 bg-slate-800 border border-slate-700 hover:border-cyan-400 rounded-lg text-xs font-mono text-white">X (Pauli-X)</button>
+              <button id="gate-y" class="p-2 bg-slate-800 border border-slate-700 hover:border-purple-400 rounded-lg text-xs font-mono text-white">Y (Pauli-Y)</button>
+              <button id="gate-z" class="p-2 bg-slate-800 border border-slate-700 hover:border-cyan-400 rounded-lg text-xs font-mono text-white">Z (Phase π)</button>
+            </div>
+            <div class="grid grid-cols-3 gap-2">
+              <button id="gate-s" class="p-2 bg-slate-800 border border-slate-700 hover:border-emerald-400 rounded-lg text-xs font-mono text-emerald-300">S (Phase π/2)</button>
+              <button id="gate-t" class="p-2 bg-slate-800 border border-slate-700 hover:border-amber-400 rounded-lg text-xs font-mono text-amber-300">T (π/4 Gate)</button>
+              <button id="gate-reset" class="p-2 bg-red-950/40 border border-red-800/60 hover:border-red-400 rounded-lg text-xs font-mono text-red-300">Reset |0⟩</button>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- LAB 5: Black Hole Holographic Calculator -->
+      <!-- LAB 5: Black Hole, Kerr Ergosphere & Holographic Calculator -->
       <div id="lab-blackhole" class="lab-view glass-panel p-6 rounded-2xl max-w-4xl mx-auto border border-slate-800 hidden">
         <div class="flex flex-col md:flex-row justify-between md:items-center gap-4 mb-4 pb-4 border-b border-slate-800">
           <div>
-            <h3 class="text-lg font-bold text-white" data-tr="Kara Delik Entropisi ve Holografik İlke Hesaplayıcı" data-en="Black Hole Entropy & Holographic Principle Calculator">Kara Delik Entropisi ve Holografik İlke Hesaplayıcı</h3>
-            <p class="text-xs text-slate-300" data-tr="Bekenstein-Hawking formülüyle olay ufku alanı ve depolanan maksimum Planck bit miktarını canlı hesaplayın." data-en="Calculate event horizon area and maximum Planck information capacity via Bekenstein-Hawking equation.">
-              Bekenstein-Hawking formülüyle olay ufku alanı ve depolanan maksimum Planck bit miktarını canlı hesaplayın.
+            <h3 class="text-lg font-bold text-white" data-tr="Kara Delik Entropisi, Kerr Ergoküresi ve Holografik İlke" data-en="Black Hole Entropy, Kerr Ergosphere & Holographic Calculator">Kara Delik Entropisi, Kerr Ergoküresi ve Holografik İlke</h3>
+            <p class="text-xs text-slate-300" data-tr="Bekenstein-Hawking entropisi, Planck bit kapasitesi ve dönen (Kerr) kara deliklerin Penrose enerji çekim verimini canlı simüle edin." data-en="Simulate Bekenstein-Hawking entropy, Planck bit capacity, and rotating Kerr black hole Penrose energy extraction.">
+              Bekenstein-Hawking entropisi, Planck bit kapasitesi ve dönen (Kerr) kara deliklerin Penrose enerji çekim verimini canlı simüle edin.
             </p>
           </div>
           <div>
@@ -325,17 +340,31 @@
           </div>
         </div>
 
-        <div class="mb-6">
-          <div class="flex justify-between text-xs font-mono text-slate-300 mb-2">
-            <span>Kara Delik Kütlesi (M☉):</span>
-            <span id="bh-mass-val" class="text-quantum-cyan font-bold">1 M☉</span>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 items-center">
+          <div class="space-y-4">
+            <div>
+              <div class="flex justify-between text-xs font-mono text-slate-300 mb-1">
+                <span>Kara Delik Kütlesi (M☉):</span>
+                <span id="bh-mass-val" class="text-quantum-cyan font-bold">1 M☉</span>
+              </div>
+              <input type="range" id="bh-mass-slider" min="1" max="100" value="1" step="0.5" class="w-full" />
+            </div>
+            <div>
+              <div class="flex justify-between text-xs font-mono text-slate-300 mb-1">
+                <span>Kerr Dönme Parametresi (Spin a/M):</span>
+                <span id="bh-spin-val" class="text-quantum-purple font-bold">0.00 (Schwarzschild)</span>
+              </div>
+              <input type="range" id="bh-spin-slider" min="0" max="0.99" value="0" step="0.01" class="w-full" />
+            </div>
           </div>
-          <input type="range" id="bh-mass-slider" min="1" max="100" value="1" step="0.5" class="w-full" />
+          <div class="bg-slate-950/80 rounded-xl p-3 border border-slate-800 flex items-center justify-center">
+            <canvas id="bh-canvas" class="w-full h-44"></canvas>
+          </div>
         </div>
 
         <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
           <div class="p-4 bg-slate-900/80 rounded-xl border border-slate-800">
-            <div class="text-xs text-slate-400 font-mono">Schwarzschild Yarıçapı</div>
+            <div class="text-xs text-slate-400 font-mono">Dış Ufuk (r₊) / Schwarzschild</div>
             <div id="bh-rs-val" class="text-base md:text-lg font-bold text-quantum-cyan font-mono mt-1">2.95 km</div>
           </div>
           <div class="p-4 bg-slate-900/80 rounded-xl border border-slate-800">
@@ -346,9 +375,13 @@
             <div class="text-xs text-slate-400 font-mono">Bekenstein-Hawking Entropisi</div>
             <div id="bh-entropy-val" class="text-base md:text-lg font-bold text-quantum-pink font-mono mt-1">1.46 × 10⁵⁴ J/K</div>
           </div>
-          <div class="p-4 bg-slate-900/80 rounded-xl border border-slate-800 col-span-2">
-            <div class="text-xs text-slate-400 font-mono">Holografik Bilgi Depolama (Bit / Terabayt)</div>
+          <div class="p-4 bg-slate-900/80 rounded-xl border border-slate-800">
+            <div class="text-xs text-slate-400 font-mono">Holografik Bilgi Kapasitesi</div>
             <div id="bh-bits-val" class="text-base md:text-lg font-bold text-quantum-emerald font-mono mt-1">1.52 × 10⁷⁷ bit</div>
+          </div>
+          <div class="p-4 bg-slate-900/80 rounded-xl border border-slate-800">
+            <div class="text-xs text-slate-400 font-mono">Penrose Dönme Enerjisi Verimi</div>
+            <div id="bh-penrose-val" class="text-base md:text-lg font-bold text-amber-400 font-mono mt-1">%0.00 (Statik)</div>
           </div>
           <div class="p-4 bg-slate-900/80 rounded-xl border border-slate-800">
             <div class="text-xs text-slate-400 font-mono">Hawking Sıcaklığı</div>
@@ -477,6 +510,111 @@
           Uzay-zamanın piksellendiği asgari fiziksel uzunluk.
         </div>
       </div>
+
+      <!-- LAB 9: Landauer Bit Erasure & Maxwell's Demon Simulator -->
+      <div id="lab-landauer" class="lab-view glass-panel p-6 rounded-2xl max-w-4xl mx-auto border border-slate-800 hidden">
+        <div class="flex flex-col md:flex-row justify-between md:items-center gap-4 mb-4 pb-4 border-b border-slate-800">
+          <div>
+            <h3 class="text-lg font-bold text-white" data-tr="Landauer İlkesi & Maxwell'in İblisi Termodinamik Simülatörü" data-en="Landauer's Principle & Maxwell's Demon Simulator">Landauer İlkesi & Maxwell'in İblisi Termodinamik Simülatörü</h3>
+            <p class="text-xs text-slate-300" data-tr='"Bilgi fizikseldir": Bit akışının Shannon entropisini ve silinirken yaydığı asgari termodinamik ısıyı (E ≥ k_B T ln 2) hesaplayın.' data-en='"Information is physical": Calculate bitstream Shannon entropy and minimum thermodynamic heat dissipated during erasure (E >= k_B T ln 2).'>
+              "Bilgi fizikseldir": Bit akışının Shannon entropisini ve silinirken yaydığı asgari termodinamik ısıyı ($E \ge k_B T \ln 2$) hesaplayın.
+            </p>
+          </div>
+          <div class="flex gap-2">
+            <button id="landauer-random-btn" class="px-3 py-1.5 bg-cyan-500/20 border border-cyan-500/40 text-cyan-300 text-xs font-mono rounded-lg hover:bg-cyan-500/30">
+              🎲 Rastgele 16-Bit
+            </button>
+            <button id="landauer-erase-btn" class="px-3 py-1.5 bg-gradient-to-r from-pink-500 to-purple-600 text-white text-xs font-mono font-semibold rounded-lg hover:opacity-90">
+              🔥 Belleği Sil (Isı Yay)
+            </button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 items-center">
+          <div class="space-y-4">
+            <div>
+              <label class="block text-xs font-mono text-slate-300 mb-1">Bellek Bit Dizisi (0 ve 1):</label>
+              <input type="text" id="landauer-bitstream-input" value="0110101100110101" maxlength="64" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 font-mono text-xs text-quantum-cyan focus:outline-none focus:border-quantum-cyan" />
+            </div>
+            <div>
+              <div class="flex justify-between text-xs font-mono text-slate-300 mb-1">
+                <span>Ortam Sıcaklığı (T):</span>
+                <span id="landauer-temp-val" class="text-quantum-gold font-bold">300 K (Oda Sıcaklığı)</span>
+              </div>
+              <input type="range" id="landauer-temp-slider" min="2.7" max="1000" value="300" step="0.1" class="w-full" />
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+              <div class="p-3 bg-slate-900/90 rounded-xl border border-slate-800">
+                <div class="text-xs text-slate-400 font-mono">Shannon Entropisi H(X)</div>
+                <div id="landauer-shannon-val" class="text-sm md:text-base font-bold text-quantum-cyan font-mono mt-1">1.0000 bit</div>
+              </div>
+              <div class="p-3 bg-slate-900/90 rounded-xl border border-slate-800">
+                <div class="text-xs text-slate-400 font-mono">1 Bit Silme Sınırı</div>
+                <div id="landauer-single-val" class="text-sm md:text-base font-bold text-quantum-purple font-mono mt-1">2.87 × 10⁻²¹ J</div>
+              </div>
+              <div class="p-3 bg-slate-900/90 rounded-xl border border-slate-800 col-span-2">
+                <div class="text-xs text-slate-400 font-mono">Toplam Yayılan Termodinamik Isı (ΔQ)</div>
+                <div id="landauer-total-val" class="text-sm md:text-base font-bold text-quantum-pink font-mono mt-1">4.59 × 10⁻²⁰ J (0.29 eV)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-slate-950/80 rounded-xl p-3 border border-slate-800 flex flex-col items-center justify-center">
+            <canvas id="landauer-canvas" class="w-full h-52"></canvas>
+            <span class="text-xs font-mono text-slate-400 mt-2">Maxwell'in İblisi Bellek Kaydı & Termal Foton Deşarjı</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- LAB 10: AdS/CFT & Ryu-Takayanagi Holographic Entanglement Simulator -->
+      <div id="lab-adscft" class="lab-view glass-panel p-6 rounded-2xl max-w-4xl mx-auto border border-slate-800 hidden">
+        <div class="text-left mb-4 pb-4 border-b border-slate-800">
+          <h3 class="text-lg font-bold text-white" data-tr="AdS/CFT Holografisi & Ryu-Takayanagi Dolanıklık Ağı (It from Qubit)" data-en="AdS/CFT Holography & Ryu-Takayanagi Entanglement Network (It from Qubit)">AdS/CFT Holografisi & Ryu-Takayanagi Dolanıklık Ağı (It from Qubit)</h3>
+          <p class="text-xs text-slate-300" data-tr="Sınır yüzeyindeki (CFT) bir A bölgesinin kuantum dolanıklık entropisi S_A, içerideki hiperbolik uzayın (AdS Bulk) minimal jeodezik uzunluğuna γ_A eşittir: S_A = Area(γ_A) / (4 G_N)." data-en="Boundary CFT entanglement entropy S_A equals the minimal geodesic length γ_A in bulk AdS gravity: S_A = Area(γ_A) / (4 G_N).">
+            Sınır yüzeyindeki (CFT) bir $A$ bölgesinin kuantum dolanıklık entropisi $S_A$, içerideki hiperbolik uzayın (AdS Bulk) minimal jeodezik uzunluğuna $\gamma_A$ eşittir: $S_A = \frac{\text{Area}(\gamma_A)}{4 G_N}$.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+          <div class="space-y-4">
+            <div>
+              <div class="flex justify-between text-xs font-mono text-slate-300 mb-1">
+                <span>Sınır Alt-Sistem Açısı (θ_A):</span>
+                <span id="rt-angle-val" class="text-quantum-cyan font-bold">120°</span>
+              </div>
+              <input type="range" id="rt-angle-slider" min="15" max="345" value="120" step="5" class="w-full" />
+            </div>
+
+            <div>
+              <div class="flex justify-between text-xs font-mono text-slate-300 mb-1">
+                <span>CFT Merkezi Yükü (Central Charge c):</span>
+                <span id="rt-charge-val" class="text-quantum-purple font-bold">12.0</span>
+              </div>
+              <input type="range" id="rt-charge-slider" min="1" max="50" value="12" step="1" class="w-full" />
+            </div>
+
+            <div class="grid grid-cols-1 gap-3">
+              <div class="p-3 bg-slate-900/90 rounded-xl border border-slate-800 flex justify-between items-center">
+                <span class="text-xs text-slate-400 font-mono">Bulk Minimal Jeodezik Uzunluk L(γ_A):</span>
+                <span id="rt-geodesic-val" class="text-sm font-bold text-quantum-cyan font-mono">10.31</span>
+              </div>
+              <div class="p-3 bg-slate-900/90 rounded-xl border border-slate-800 flex justify-between items-center">
+                <span class="text-xs text-slate-400 font-mono">Ryu-Takayanagi Entropisi (S_A):</span>
+                <span id="rt-entropy-val" class="text-sm font-bold text-quantum-pink font-mono">20.62</span>
+              </div>
+              <div class="p-3 bg-slate-900/90 rounded-xl border border-slate-800 flex justify-between items-center">
+                <span class="text-xs text-slate-400 font-mono">Dolanık Qubit Çifti (Bell Pairs):</span>
+                <span id="rt-qubits-val" class="text-sm font-bold text-quantum-emerald font-mono">29.75 Qubit</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-slate-950/80 rounded-xl p-4 border border-slate-800 flex flex-col items-center justify-center">
+            <canvas id="rt-canvas" class="w-full h-60"></canvas>
+            <span class="text-xs font-mono text-slate-400 mt-2">Poincaré Diski: AdS Bulk Tensor Ağı & γ_A Minimal Yüzeyi</span>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- VISUAL BANNER 3: Quantum Fields & Wave Mechanics -->
@@ -538,7 +676,10 @@
         </p>
       </div>
 
-      <!-- Glossary Filter Buttons -->
+      <!-- Glossary Search & Filter Buttons -->
+      <div class="max-w-md mx-auto mb-6">
+        <input type="text" id="glossary-search" placeholder="Kavram veya terim ara (örn. Apeiron, Qubit, ER=EPR)..." data-tr-placeholder="Kavram veya terim ara (örn. Apeiron, Qubit, ER=EPR)..." data-en-placeholder="Search concept or term (e.g. Apeiron, Qubit, ER=EPR)..." class="w-full px-4 py-2 rounded-xl bg-slate-900/80 border border-slate-700 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-quantum-cyan transition-colors" />
+      </div>
       <div class="flex flex-wrap justify-center gap-2 mb-8">
         <button class="glossary-filter-btn px-4 py-1.5 rounded-xl text-xs font-mono border border-quantum-cyan/50 bg-cyan-500/20 text-quantum-cyan transition-all" data-cat="all" data-tr="Tüm Kavramlar" data-en="All Terms">Tüm Kavramlar</button>
         <button class="glossary-filter-btn px-4 py-1.5 rounded-xl text-xs font-mono border border-slate-700 hover:border-amber-400 text-slate-300 transition-all" data-cat="ancient" data-tr="🏛️ Antik Felsefe" data-en="🏛️ Ancient Philosophy">🏛️ Antik Felsefe</button>
@@ -558,7 +699,7 @@
       <div class="glass-panel rounded-2xl overflow-hidden border border-slate-800 shadow-2xl relative group">
         <img src="assets/banners/banner_5_simulated_universe.png" alt="Simüle Evren ve Evrensel Kuantum Bilgisayarı" class="w-full h-auto object-cover max-h-80 sm:max-h-96 transform group-hover:scale-[1.01] transition-transform duration-500" loading="lazy" />
         <div class="p-4 bg-slate-950/80 border-t border-slate-800/80 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
-          <span class="text-xs font-mono text-quantum-gold" data-tr="🌐 Görsel 5: Seth Lloyd 10¹²² Kuantum İşlemi, Bostrom Trilemması ve Simüle Multiverse" data-en="🌐 Visual 5: Seth Lloyd 10¹²² Quantum Ops, Bostrom Trilemma & Simulated Multiverse">🌐 Görsel 5: Seth Lloyd 10¹²² Kuantum İşlemi, Bostrom Trilemması ve Simüle Multiverse</span>
+          <span class="text-xs font-mono text-quantum-gold" data-tr="🌐 Görsel 5: Seth Lloyd 10¹²² Kuantum İşlemi, Bostrom Trilemması ve Simüle Multiverse" data-en="🌐 Visual 5: Seth Lloyd 10¹²² Quantum Ops, Bostrom Trilemma & Simulated Multiverse">🌐 Görsel 5: Seth Lloyd 10¹²² Kuantum İşlemi, Bostrom Trilemma & Simulated Multiverse</span>
           <span class="text-xs text-slate-400 font-mono">1280 × 500 HD Spektrum</span>
         </div>
       </div>
@@ -567,46 +708,15 @@
     <!-- SECTION: THEORY COMPENDIUM -->
     <section id="theory" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
       <div class="text-center max-w-3xl mx-auto mb-10">
-        <div class="text-xs font-mono text-quantum-gold uppercase tracking-wider mb-1" data-tr="Akademik Dokümantasyon" data-en="Academic Compendium">Akademik Dokümantasyon</div>
+        <div class="text-xs font-mono text-quantum-gold uppercase tracking-wider mb-1" data-tr="Akademik Dokümantasyon (6 Bölüm)" data-en="Academic Compendium (6 Chapters)">Akademik Dokümantasyon (6 Bölüm)</div>
         <h2 class="text-3xl font-extrabold text-white mb-4" data-tr="Teori ve Makale Kütüphanesi" data-en="Theory & Article Library">Teori ve Makale Kütüphanesi</h2>
-        <p class="text-slate-300 text-sm md:text-base" data-tr="Depo içerisinde yer alan derinlemesine araştırma belgeleri ve kuramsal makaleler." data-en="In-depth research papers and theoretical treatises included in the repository.">
-          Depo içerisinde yer alan derinlemesine araştırma belgeleri ve kuramsal makaleler.
+        <p class="text-slate-300 text-sm md:text-base" data-tr="Depo içerisinde yer alan 6 kapsamlı araştırma belgesini ve kuramsal makaleyi incelemek için kartlara tıklayın." data-en="Click on any card to read the 6 in-depth research chapters and theoretical treatises included in the repository.">
+          Depo içerisinde yer alan 6 kapsamlı araştırma belgesini ve kuramsal makaleyi incelemek için kartlara tıklayın.
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="glass-panel p-6 rounded-2xl border border-slate-800 hover:border-amber-500/40 transition-all flex flex-col justify-between">
-          <div>
-            <span class="text-xs font-mono text-amber-400 bg-amber-500/10 px-2.5 py-1 rounded-full border border-amber-500/20">docs/01_antik_cag_ve_arkhe.md</span>
-            <h3 class="text-lg font-bold text-white mt-3 mb-2" data-tr="Antik Çağ ve Arkhe Arayışı" data-en="Ancient Era & Arche Inquiry">Antik Çağ ve Arkhe Arayışı</h3>
-            <p class="text-xs text-slate-300 leading-relaxed mb-4" data-tr="Miletos Okulu, Thales, Anaksimandros'un Apeiron'u, Herakleitos'un Logos'u ve Demokritos'un Atomos hipotezi." data-en="Milesian school, Thales, Anaximander's Apeiron, Heraclitus's Logos, and Democritus's Atomos hypothesis.">
-              Miletos Okulu, Thales, Anaksimandros'un Apeiron'u, Herakleitos'un Logos'u ve Demokritos'un Atomos hipotezi.
-            </p>
-          </div>
-          <div class="text-xs font-mono text-amber-300 font-semibold">5 Sayfa Teorik İnceleme</div>
-        </div>
-
-        <div class="glass-panel p-6 rounded-2xl border border-slate-800 hover:border-purple-500/40 transition-all flex flex-col justify-between">
-          <div>
-            <span class="text-xs font-mono text-purple-400 bg-purple-500/10 px-2.5 py-1 rounded-full border border-purple-500/20">docs/02_kuantum_mekanigi_ve_alan_teorisi.md</span>
-            <h3 class="text-lg font-bold text-white mt-3 mb-2" data-tr="Modern Fizik & Kuantum Alan Teorisi" data-en="Modern Physics & Quantum Field Theory">Modern Fizik & Kuantum Alan Teorisi</h3>
-            <p class="text-xs text-slate-300 leading-relaxed mb-4" data-tr="Einstein E=mc², Planck kuantumu, Standart Model parçacık tablosu, Higgs alanı ve karanlık enerji." data-en="Einstein E=mc², Planck quanta, Standard Model particle table, Higgs field, and dark energy.">
-              Einstein E=mc², Planck kuantumu, Standart Model parçacık tablosu, Higgs alanı ve karanlık enerji.
-            </p>
-          </div>
-          <div class="text-xs font-mono text-purple-300 font-semibold">6 Sayfa QFT İncelemesi</div>
-        </div>
-
-        <div class="glass-panel p-6 rounded-2xl border border-slate-800 hover:border-cyan-500/40 transition-all flex flex-col justify-between">
-          <div>
-            <span class="text-xs font-mono text-cyan-400 bg-cyan-500/10 px-2.5 py-1 rounded-full border border-cyan-500/20">docs/03_dijital_fizik_ve_it_from_bit.md</span>
-            <h3 class="text-lg font-bold text-white mt-3 mb-2" data-tr="Dijital Fizik & It from Bit" data-en="Digital Physics & It from Bit">Dijital Fizik & It from Bit</h3>
-            <p class="text-xs text-slate-300 leading-relaxed mb-4" data-tr="Shannon entropisi, Landauer ilkesi, John Wheeler, Konrad Zuse, Holografik ilke, Seth Lloyd ve Bostrom trilemması." data-en="Shannon entropy, Landauer principle, Wheeler, Zuse, Holographic principle, Seth Lloyd, and Bostrom.">
-              Shannon entropisi, Landauer ilkesi, John Wheeler, Konrad Zuse, Holografik ilke, Seth Lloyd ve Bostrom trilemması.
-            </p>
-          </div>
-          <div class="text-xs font-mono text-cyan-300 font-semibold">8 Sayfa Enformasyon İncelemesi</div>
-        </div>
+      <div id="theory-cards-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Rendered dynamically by app.js -->
       </div>
     </section>
 
@@ -614,9 +724,9 @@
     <section id="quiz" class="py-16 px-4 sm:px-6 lg:px-8 max-w-3xl mx-auto w-full">
       <div class="text-center mb-8">
         <div class="text-xs font-mono text-quantum-cyan uppercase tracking-wider mb-1" data-tr="Bilgi Değerlendirmesi" data-en="Knowledge Evaluation">Bilgi Değerlendirmesi</div>
-        <h2 class="text-3xl font-extrabold text-white mb-2" data-tr="Kozmik Enformasyon Testi" data-en="Cosmic Information Quiz">Kozmik Enformasyon Testi</h2>
-        <p class="text-slate-300 text-xs md:text-sm" data-tr="Maddeden Yazılıma uzanan 2600 yıllık serüvendeki 10 kritik kavramı test edin." data-en="Test your knowledge on 10 key milestones from Ancient matter to Digital physics.">
-          Maddeden Yazılıma uzanan 2600 yıllık serüvendeki 10 kritik kavramı test edin.
+        <h2 class="text-3xl font-extrabold text-white mb-2" data-tr="Kozmik Enformasyon Testi (15 Soru)" data-en="Cosmic Information Quiz (15 Questions)">Kozmik Enformasyon Testi (15 Soru)</h2>
+        <p class="text-slate-300 text-xs md:text-sm" data-tr="Maddeden Yazılıma uzanan 2600 yıllık serüvendeki 15 kritik kavramı test edin." data-en="Test your knowledge on 15 key milestones from Ancient matter to Digital physics.">
+          Maddeden Yazılıma uzanan 2600 yıllık serüvendeki 15 kritik kavramı test edin.
         </p>
       </div>
 

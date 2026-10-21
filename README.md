@@ -1,8 +1,8 @@
 # 🌌 Evrenin Yapıtaşı: Maddeden Yazılıma (From Matter to Bit)
 
-[![Web App](https://img.shields.io/badge/Web_App-8_Interactive_Labs-00f2fe?style=for-the-badge&logo=html5)](index.html)
+[![Web App](https://img.shields.io/badge/Web_App-10_Interactive_Labs-00f2fe?style=for-the-badge&logo=html5)](index.html)
 [![Python Tests](https://img.shields.io/badge/Python_Tests-Passing-06d6a0?style=for-the-badge&logo=python)](cli/test_universe.py)
-[![Physics & Info Theory](https://img.shields.io/badge/Physics-It_From_Bit-9d4edd?style=for-the-badge)](docs/)
+[![Physics & Info Theory](https://img.shields.io/badge/Physics-It_From_Bit_%26_Qubit-9d4edd?style=for-the-badge)](docs/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-ffd166?style=for-the-badge)](LICENSE)
 
 > *"Kozmos içimizdedir. Bizler yıldız tozundan yapıldık. Biz, evrenin kendini bilmesinin bir yoluyuz."*  
@@ -17,7 +17,7 @@
 
 **"Evren neden ve neyden oluşuyor?"** sorusu, insanlığın 2600 yılı aşkın süredir yanıt aradığı en temel ontolojik ve fiziksel problemdir.
 
-Bu proje; insanlığın evrenin temel yapıtaşlarına dair anlayışının **"Madde"** (Atom/Töz) paradigmasından **"Enerji ve Alanlar"** (Kuantum Alan Teorisi, $E=mc^2$) paradigmasına, son aşamada ise **"Bilgi ve Hesaplama"** (Dijital Fizik, *It from Bit*, Holografik Prensip, Simülasyon Hipotezi) aşamasına nasıl evrildiğini **8 canlı simülasyon laboratuvarı**, **24 kronolojik dönüm noktası**, **Kavram Sözlüğü**, **10 soruluk Kozmik Test**, matematiksel formüller, akademik makaleler ve Python hesaplama CLI'ı ile sistematik olarak sunan kapsamlı bir platformdur.
+Bu proje; insanlığın evrenin temel yapıtaşlarına dair anlayışının **"Madde"** (Atom/Töz) paradigmasından **"Enerji ve Alanlar"** (Kuantum Alan Teorisi, $E=mc^2$) paradigmasına, son aşamada ise **"Bilgi ve Hesaplama"** (Dijital Fizik, *It from Bit*, *It from Qubit*, Holografik Prensip, Simülasyon Hipotezi) aşamasına nasıl evrildiğini **10 canlı simülasyon laboratuvarı**, **28 kronolojik dönüm noktası**, **24 terimlik Kavram Sözlüğü**, **15 soruluk Kozmik Test**, **6 bölümlük Teori Kütüphanesi**, matematiksel formüller ve **10 modüllü Python hesaplama CLI'ı** ile sistematik olarak sunan kapsamlı bir platformdur.
 
 ---
 
@@ -49,18 +49,20 @@ flowchart LR
 
 ---
 
-## 🔬 8 İnteraktif Simülasyon Laboratuvarı
+## 🔬 10 İnteraktif Simülasyon Laboratuvarı
 
-Web uygulamasında 8 adet gerçek zamanlı, canlı etkileşimli fizik ve enformasyon simülatörü yer almaktadır:
+Web uygulamasında 10 adet gerçek zamanlı, canlı etkileşimli fizik ve enformasyon simülatörü yer almaktadır:
 
 1. **Atom & Kuantum Orbitalleri Simülatörü:** Demokritos sert küresi, Bohr kuantum yörüngeleri ve Schrödinger kuantum olasılık bulutunun gerçek zamanlı görselleştirmesi ve foton soğurma/sıçrama tetikleyicisi.
 2. **Kuantum Çift Yarık & Dalga Çöküşü:** Fotonların dalga girişimi ve gözlemci dedektörü açıldığında dalga fonksiyonunun parçacığa çöküş dinamiği.
 3. **Konrad Zuse & Wolfram Hücresel Otomatı:** Kural 30 (kaos), Kural 110 (Evrensel Turing tam), Kural 90 (Sierpinski fraktalı) ve Kural 184 (akış dinamiği).
-4. **Qubit & Bloch Küresi Simülatörü:** 3D Bloch küresi üzerinde süperpozisyon durum vektörü $|\Psi\rangle = \alpha|0\rangle + \beta|1\rangle$, Hadamard $H$, Pauli $X, Z$ kuantum mantık kapıları ve olasılık çubukları.
-5. **Kara Delik & Holografik Hesaplayıcı:** Güneş kütleli, Cygnus X-1, Sagittarius A*, M87* ve TON 618 hazır şablonları; Schwarzschild yarıçapı, olay ufku alanı, Bekenstein-Hawking entropisi, Planck piksel sayısı ve Terabayt cinsinden bilgi depolama kapasitesi.
+4. **Qubit & Bloch Küresi Evrensel Kuantum Kapıları:** 3D Bloch küresi üzerinde süperpozisyon durum vektörü $|\Psi\rangle = \cos(\theta/2)|0\rangle + e^{i\phi}\sin(\theta/2)|1\rangle$, Hadamard ($H$), Pauli ($X, Y, Z$), Faz ($S, T$) kapıları ve Bloch koordinatları $(x, y, z)$.
+5. **Kara Delik, Kerr Ergoküresi & Holografik Hesaplayıcı:** Güneş kütleli, Cygnus X-1, Sagittarius A*, M87* ve TON 618 şablonları; Kerr dönme parametresi ($a/M$), dış/iç olay ufukları, ergoküre, Penrose dönme enerjisi verimi ($\le \%29.3$), Bekenstein-Hawking entropisi ve canlı kara delik simülasyonu.
 6. **Nick Bostrom Simülasyon Trilemması:** $f_p$ (post-insan çağı oranı) ve $N_I$ (ortalama simülasyon sayısı) parametrelerine bağlı olarak $P(\text{Sim}) = \frac{f_p N_I}{f_p N_I + 1}$ Bayesyen olasılık hesabı.
 7. **Kuantum Dolanıklık ve Bell Eşitsizliği (EPR):** Alice ve Bob dedektör açılarının ($\theta_A, \theta_B$) kontrolü, kuantum korelasyonu $E(\theta_A, \theta_B) = -\cos(2(\theta_A - \theta_B))$ ve CHSH testiyle yerel gerçekçiliğin ihlali ($S = 2\sqrt{2} \approx 2.828 > 2$).
 8. **Kozmik Ölçekler ve Seth Lloyd Bilgi Hiyerarşisi:** Planck ölçeğinden ($10^{-35}$ m) Gözlemlenebilir Evrene ($10^{26}$ m) fiziksel boyutlar, kütleler ve bilgi (Bit) kapasiteleri.
+9. **Landauer Bilgi Silme & Maxwell'in İblisi Termodinamik Simülatörü:** Bellek bit akışının Shannon entropisi $H(X)$, sıcaklık ($2.7\text{ K} - 1000\text{ K}$), tek bit Landauer sınırı ($k_B T \ln 2$), silme ısısı ($\Delta Q$) ve canlı Maxwell'in İblisi moleküler gaz odası animasyonu.
+10. **AdS/CFT Holografisi & Ryu-Takayanagi Dolanıklık Ağı ("It from Qubit"):** Poincaré diski üzerinde hiperbolik AdS bulk tensor ağı (MERA), sınır CFT açısı ($\theta_A$), merkezi yük ($c$), minimal jeodezik eğri ($\gamma_A$) ve Ryu-Takayanagi dolanıklık entropisi $S_A = \frac{\text{Area}(\gamma_A)}{4G_N}$.
 
 ---
 

@@ -44,3 +44,19 @@ $$R_{\text{max}} = \frac{2 E}{\pi \hbar}$$
 1-Boyutlu 3-hücre komşuluklu hücresel otomat kural fonksiyonu:
 $$s_i^{(t+1)} = f(s_{i-1}^{(t)}, s_i^{(t)}, s_{i+1}^{(t)})$$
 8 olası komşuluk konfigürasyonunun her biri için bir sonraki durum belirlenerek $2^8 = 256$ farklı kural üretilir (örn. Kural 30, Kural 110).
+
+### 2.6. Dönen (Kerr) Kara Delik ve Penrose Süreci
+Kütleçekimsel yarıçapı $r_g = \frac{GM}{c^2}$ ve dönme parametresi $a = \frac{J}{Mc}$ olan bir Kerr kara deliğinin dış olay ufku ($r_+$) ve iç Cauchy ufku ($r_-$):
+$$r_\pm = r_g \pm \sqrt{r_g^2 - a^2}$$
+Ekvator düzlemindeki ergoküre yarıçapı $r_{\text{ergo}}(\theta = \pi/2) = 2 r_g$ olup indirgenemez kütle ($M_{\text{irr}}$) ve Penrose süreci maksimum dönme enerjisi verimi:
+$$M_{\text{irr}} = \frac{c^2}{2G}\sqrt{r_+^2 + a^2}, \qquad \eta_{\text{max}} = 1 - \frac{1}{\sqrt{2}} \approx \%29.29$$
+
+### 2.7. Bell-CHSH Kuantum Dolanıklık Eşitsizliği
+Singlet durumundaki $|\Psi^-\rangle = \frac{1}{\sqrt{2}}(|01\rangle - |10\rangle)$ dolanık foton çiftleri için kuantum korelasyonu ve CHSH parametresi:
+$$E(\theta_A, \theta_B) = -\cos\big(2(\theta_A - \theta_B)\big)$$
+$$S = |E(a, b) - E(a, b') + E(a', b) + E(a', b')| \le 2\sqrt{2} \approx 2.828 \quad (\text{Klasik Yerel Gerçekçilik: } S \le 2)$$
+
+### 2.8. Ryu-Takayanagi Holografik Dolanıklık Entropisi ($\text{AdS}_3/\text{CFT}_2$)
+Sınır Konformal Alan Teorisindeki ($CFT_2$) bir $A$ alt-sisteminin kuantum dolanıklık entropisi, hiperbolik Anti-de Sitter ($AdS_3$) uzayındaki minimal jeodezik uzunluk $\text{Area}(\gamma_A)$ ile belirlenir:
+$$S_A = \frac{\text{Area}(\gamma_A)}{4 G_N \hbar} = \frac{c}{3} \ln\left(\frac{2L}{\epsilon} \sin\frac{\theta_A}{2}\right)$$
+Burada $c = \frac{3L}{2G_N\hbar}$ Brown-Henneaux merkezi yükü, $L$ AdS eğrilik yarıçapı ve $\epsilon$ UV kesme (cutoff) ölçeğidir.

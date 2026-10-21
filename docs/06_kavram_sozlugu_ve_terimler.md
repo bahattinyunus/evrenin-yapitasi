@@ -85,3 +85,22 @@ Bu belge, **Evrenin Yapıtaşı: Maddeden Yazılıma** projesi kapsamında kulla
 ### Bostrom Simülasyon Trilemması (Simulation Argument)
 * **Tanım:** Nick Bostrom (2003) tarafından Bayesyen olasılıkla kurulan argüman; gelişmiş teknolojik uygarlıkların çok sayıda atalar simülasyonu çalıştırması durumunda simüle bilinçlerin biyolojik olanlara oranının katrilyonlara ulaşacağını, dolayısıyla bir simülasyon içinde yaşama olasılığımızın $1$'e yakın olduğunu gösterir:
   $$P(\text{Sim}) = \frac{f_p N_I}{f_p N_I + 1}$$
+
+### Ryu-Takayanagi Formülü ("It from Qubit")
+* **Tanım:** Shinsei Ryu ve Tadashi Takayanagi (2006) tarafından keşfedilen ve Bekenstein-Hawking kara delik entropisini tüm holografik uzay-zamana genelleştiren denklem:
+  $$S_A = \frac{\text{Area}(\gamma_A)}{4 G_N \hbar}$$
+  Sınır yüzeyindeki kuantum dolanıklığın, içerideki kütleçekimli uzay-zaman geometrisini doğrudan dokuduğunu matematiksel olarak kanıtlar.
+
+### ER = EPR Hipotezi
+* **Tanım:** Juan Maldacena ve Leonard Susskind (2013) tarafından ortaya atılan; genel görelilikteki Einstein-Rosen solucan deliği köprüleri ($ER$) ile kuantum mekaniğindeki Einstein-Podolsky-Rosen dolanıklığının ($EPR$) aynı fiziksel olgunun iki yüzü olduğunu savunan kuantum kütleçekim tezi.
+
+### Kerr Ergoküresi & Penrose Süreci
+* **Tanım:** Dönen bir Kerr kara deliğinin olay ufkunun hemen dışında yer alan ve uzay-zamanın ışık hızına yakın sürüklendiği (*frame-dragging*) bölge. Roger Penrose, bu bölgeye gönderilen parçacıkların bölünmesiyle kara deliğin dönme enerjisinin $\%29.29$'a kadarının dışarı çekilebileceğini ispatlamıştır.
+
+### Von Neumann Entropisi
+* **Tanım:** Kuantum mekaniğinde yoğunluk matrisi $\rho$ ile tanımlanan bir durumun kuantum enformasyon entropisi:
+  $$S(\rho) = -\text{Tr}(\rho \ln \rho)$$
+  Saf durumlar için sıfırdır; alt-sistemlerin kuantum dolanıklık derecesini ölçmekte kullanılır.
+
+### Ruliad & Hipergraf Ağları (Wolfram Physics Project)
+* **Tanım:** Stephen Wolfram (2020) tarafından önerilen; uzay-zamanın ayrık hipergraf düğümlerinin yeniden yazılmasıyla türediğini ve mümkün olan tüm hesaplamalı kuralların dolanık bütününün (**Ruliad**) fiziksel yasaların kaynağını oluşturduğunu savunan kuram.

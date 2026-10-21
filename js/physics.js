@@ -218,6 +218,162 @@ function calculateCHSH(a, aPrime, b, bPrime) {
   };
 }
 
+// Kerr Rotating Black Hole
+function calculateKerrBlackHole(massKg, spinRatio = 0.9) {
+  const spin = Math.max(0, Math.min(0.9999, spinRatio));
+  const rg = (CONSTANTS.G * massKg) / (CONSTANTS.c ** 2);
+  const a = spin * rg;
+  const disc = Math.max(0, rg ** 2 - a ** 2);
+  const rPlus = rg + Math.sqrt(disc);
+  const rMinus = rg - Math.sqrt(disc);
+  const rErgoEquator = 2 * rg;
+  const rErgoPole = rPlus;
+  const area = 4 * Math.PI * (rPlus ** 2 + a ** 2);
+  const entropyJK = (CONSTANTS.kB * (CONSTANTS.c ** 3) * area) / (4 * CONSTANTS.G * CONSTANTS.hbar);
+  const bits = entropyJK / (CONSTANTS.kB * Math.LN2);
+  const mIrr = Math.sqrt((rPlus ** 2 + a ** 2) / 4) * (CONSTANTS.c ** 2) / CONSTANTS.G;
+  const penroseEnergyJoules = Math.max(0, (massKg - mIrr) * (CONSTANTS.c ** 2));
+  const penroseEfficiency = (1 - mIrr / massKg) * 100;
+
+  return {
+    massKg,
+    spinRatio: spin,
+    rPlus,
+    rMinus,
+    rErgoEquator,
+    rErgoPole,
+    area,
+    entropyJK,
+    bits,
+    mIrr,
+    penroseEnergyJoules,
+    penroseEfficiency
+  };
+}
+
+// Ryu-Takayanagi Holographic Entanglement Entropy (AdS3/CFT2)
+function calculateRyuTakayanagi(angleRad, centralCharge = 3.0, adsRadius = 1.0, uvCutoff = 0.01) {
+  const theta = Math.max(0.001, Math.min(2 * Math.PI - 0.001, angleRad));
+  const eps = Math.max(1e-5, uvCutoff);
+  let arg = (2 * adsRadius / eps) * Math.sin(theta / 2);
+  if (arg <= 1) arg = 1.0001;
+  const entropy = (centralCharge / 3) * Math.log(arg);
+  const geodesicLength = 2 * Math.log(arg);
+  const bits = entropy / Math.LN2;
+
+  return {
+    thetaDeg: (theta * 180) / Math.PI,
+    geodesicLength,
+    entropy,
+    bits,
+    centralCharge
+  };
+}
+
+// Landauer Bitstream Thermodynamic Erasure & Shannon Entropy
+function calculateLandauerStream(bitstreamOrCount, tempK = 300) {
+  let bitCount = 1;
+  let zeros = 0;
+  let ones = 1;
+  let shannonEntropy = 1.0;
+
+  if (typeof bitstreamOrCount === 'string') {
+    const clean = bitstreamOrCount.replace(/[^01]/g, '') || '0';
+    bitCount = clean.length;
+    ones = 0;
+    for (let i = 0; i < clean.length; i++) {
+      if (clean[i] === '1') ones++;
+    }
+    zeros = bitCount - ones;
+    const p0 = zeros / bitCount;
+    const p1 = ones / bitCount;
+    shannonEntropy = 0;
+    if (p0 > 0) shannonEntropy -= p0 * Math.log2(p0);
+    if (p1 > 0) shannonEntropy -= p1 * Math.log2(p1);
+  } else {
+    bitCount = Math.max(1, Number(bitstreamOrCount) || 1);
+    zeros = Math.floor(bitCount / 2);
+    ones = bitCount - zeros;
+    shannonEntropy = 1.0;
+  }
+
+  const singleBitEnergy = CONSTANTS.kB * tempK * Math.LN2;
+  const rawTotalJoules = bitCount * singleBitEnergy;
+  const totalJoules = bitCount * singleBitEnergy * shannonEntropy;
+  const totalEv = totalJoules / CONSTANTS.eV;
+  const rawTotalEv = rawTotalJoules / CONSTANTS.eV;
+
+  return {
+    bitCount,
+    zeros,
+    ones,
+    shannonEntropy,
+    tempK,
+    singleBitEnergy,
+    rawTotalJoules,
+    rawTotalEv,
+    totalJoules,
+    totalEv
+  };
+}
+
+// Quantum Gate transformations on Bloch sphere (theta, phi)
+function applyQubitGate(gate, currentTheta, currentPhi) {
+  let th = currentTheta;
+  let ph = currentPhi;
+
+  switch (gate) {
+    case 'H':
+      if (Math.abs(th) < 1e-4) {
+        th = Math.PI / 2;
+        ph = 0;
+      } else if (Math.abs(th - Math.PI) < 1e-4) {
+        th = Math.PI / 2;
+        ph = Math.PI;
+      } else if (Math.abs(th - Math.PI / 2) < 1e-4 && Math.abs(ph) < 1e-4) {
+        th = 0;
+        ph = 0;
+      } else if (Math.abs(th - Math.PI / 2) < 1e-4 && Math.abs(ph - Math.PI) < 1e-4) {
+        th = Math.PI;
+        ph = 0;
+      } else {
+        th = Math.PI - th;
+        ph = ph + Math.PI;
+      }
+      break;
+    case 'X':
+      th = Math.PI - th;
+      ph = -ph;
+      break;
+    case 'Y':
+      th = Math.PI - th;
+      ph = Math.PI - ph;
+      break;
+    case 'Z':
+      ph = ph + Math.PI;
+      break;
+    case 'S':
+      ph = ph + Math.PI / 2;
+      break;
+    case 'T':
+      ph = ph + Math.PI / 4;
+      break;
+    case 'RESET':
+      th = 0;
+      ph = 0;
+      break;
+  }
+
+  th = (th % (2 * Math.PI) + 2 * Math.PI) % (2 * Math.PI);
+  if (th > Math.PI) {
+    th = 2 * Math.PI - th;
+    ph += Math.PI;
+  }
+  ph = (ph % (2 * Math.PI) + 2 * Math.PI) % (2 * Math.PI);
+
+  return { theta: th, phi: ph };
+}
+
 function formatSciNum(num, digits = 2) {
   if (num === 0) return "0";
   if (Math.abs(num) >= 0.01 && Math.abs(num) < 1e5) {
@@ -235,6 +391,10 @@ window.PhysicsEngine = {
   calculateSchwarzschildRadius,
   calculateEventHorizonArea,
   calculateBlackHoleInfo,
+  calculateKerrBlackHole,
+  calculateRyuTakayanagi,
+  calculateLandauerStream,
+  applyQubitGate,
   calculateLandauer,
   calculateBostromSimProb,
   evaluateWolfram,

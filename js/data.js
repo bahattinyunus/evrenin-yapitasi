@@ -260,6 +260,25 @@ window.APP_DATA = {
       tag: 'Kuantum Belirsizliği'
     },
     {
+      id: 'bell-theorem',
+      year: '1964',
+      era: 'quantum',
+      title: 'Bell Teoremi: Yerel Gerçekçiliğin Sonu ve Kuantum Dolanıklık',
+      titleEn: 'Bell\'s Theorem: The End of Local Realism & Quantum Entanglement',
+      thinker: 'John Stewart Bell',
+      summary: 'Einstein\'ın "yerel gizli değişkenler" hipotezini test edebilen matematiksel eşitsizliği kurarak kuantum dolanıklığın yerel olmayan (non-local) doğasını ispatladı.',
+      summaryEn: 'Derived the mathematical inequality capable of experimentally testing local hidden variables against quantum entanglement.',
+      quote: 'Eğer gizli değişkenli bir teori yerel ise kuantum mekaniğiyle uyuşamaz; kuantum mekaniğiyle uyuşuyorsa yerel olamaz.',
+      quoteAuthor: 'John Stewart Bell',
+      fullDescription: 'Bell Eşitsizliği (ve CHSH formu S ≤ 2), klasik yerel gerçekçilik ile kuantum mekaniğinin tahminleri (S = 2√2 ≈ 2.828) arasındaki sınırı çizdi. Yapılan deneyler doğanın kuantum mekaniğine uyduğunu ve evrenin uzamsal mesafeleri aşan bir enformasyon ağıyla bağlı olduğunu kanıtladı.',
+      fullDescriptionEn: 'Bell\'s theorem showed that no physical theory of local hidden variables can ever reproduce all the predictions of quantum mechanics.',
+      keyConcepts: ['Bell Eşitsizliği', 'CHSH Sınırı (2√2)', 'Yerel Olmama (Non-Locality)'],
+      formula: '|E(a,b) - E(a,b\') + E(a\',b) + E(a\',b\')| \\le 2 \\quad (\\text{Kuantum: } 2\\sqrt{2})',
+      impact: 'Kuantum kriptografi, kuantum ışınlama ve 2022 Nobel Fizik Ödülü\'nün temelini oluşturdu.',
+      impactEn: 'Laid the foundation for quantum information technology and earned the 2022 Nobel Prize experiments.',
+      tag: 'Bell Eşitsizliği'
+    },
+    {
       id: 'standard-model',
       year: '1970',
       era: 'quantum',
@@ -394,7 +413,7 @@ window.APP_DATA = {
       era: 'digital',
       title: 'AdS/CFT Uyuşumu ve Holografik Evren',
       titleEn: 'AdS/CFT Correspondence and the Holographic Universe',
-      thinker: 'Juan Maldacena, 't Hooft, Susskind',
+      thinker: "Juan Maldacena, 't Hooft, Susskind",
       summary: 'Yerçekimli (D+1) boyutlu bir evren, sınırındaki yerçekimsiz D boyutlu bir kuantum bilgi teorisine tam olarak denktir.',
       summaryEn: 'A gravitational (D+1)-dimensional universe is mathematically dual to a boundary D-dimensional quantum field theory.',
       quote: '3 boyutlu uzay ve yerçekimi, 2 boyutlu sınır yüzeyindeki kuantum dolanıklık desenlerinin holografik bir izdüşümüdür.',
@@ -443,6 +462,99 @@ window.APP_DATA = {
       impact: 'Fiziksel kanunları hesaplama algoritmalarıyla doğrudan özdeşleştirdi.',
       impactEn: 'Equated physical interaction directly with quantum computation.',
       tag: 'Evrensel Kuantum İşlemci'
+    },
+    {
+      id: 'feynman-quantum-sim',
+      year: '1982',
+      era: 'digital',
+      title: 'Richard Feynman: Doğayı Kuantum Bilgisayarla Simüle Etmek',
+      titleEn: 'Richard Feynman: Simulating Physics with Quantum Computers',
+      thinker: 'Richard Feynman',
+      summary: 'Klasik bilgisayarların kuantum fiziğini simüle etmekte üstel darboğaza girdiğini; doğayı tam simüle etmek için bilgisayarın kendisinin kuantum mekaniksel olması gerektiğini ilan etti.',
+      summaryEn: 'Proposed that simulating quantum physics efficiently requires a computer built upon quantum mechanical qubits rather than classical bits.',
+      quote: 'Lanet olsun, doğa klasik değildir; eğer doğanın bir simülasyonunu yapmak istiyorsanız onu kuantum mekaniksel yapsanız iyi olur!',
+      quoteAuthor: 'Richard Feynman',
+      fullDescription: 'Feynman, N parçacıklı bir kuantum sisteminin durum uzayının 2^N boyutunda büyüdüğünü, bu yüzden klasik Turing makinelerinin doğayı simüle edemeyeceğini gösterdi. Çözüm olarak "Evrensel Kuantum Simülatörü" kavramını ortaya atarak kuantum bilgisayar çağını başlattı.',
+      fullDescriptionEn: 'Feynman recognized that Hilbert space grows exponentially with particle count, launching the field of quantum computation and quantum simulation.',
+      keyConcepts: ['Kuantum Simülasyonu', 'Hilbert Uzayı Boyutu (2^N)', 'Qubit Mimarisi'],
+      formula: '\\dim(\\mathcal{H}) = 2^N',
+      impact: 'Modern kuantum bilgisayar donanımlarının ve kuantum algoritmalarının (Shor, Grover) doğuşunu tetikledi.',
+      impactEn: 'Catalyzed the global race to build universal quantum computers.',
+      tag: 'Kuantum Simülatörü'
+    },
+    {
+      id: 'ryu-takayanagi-2006',
+      year: '2006',
+      era: 'digital',
+      title: 'Ryu-Takayanagi Formülü: Dolanıklıktan Doğan Uzayzaman ("It from Qubit")',
+      titleEn: 'Ryu-Takayanagi Formula: Spacetime from Entanglement ("It from Qubit")',
+      thinker: 'Shinsei Ryu & Tadashi Takayanagi',
+      summary: 'Holografik sınır yüzeyindeki kuantum dolanıklık entropisinin (S_A), içerideki yerçekimli uzayın minimal yüzey alanına (γ_A) tam olarak eşit olduğunu ispatladılar.',
+      summaryEn: 'Proved that quantum entanglement entropy on the boundary CFT equals the minimal surface area in the bulk gravitational spacetime.',
+      quote: 'Kuantum dolanıklık, uzay-zaman dokusunu birbirine diken görünmez ipliktir.',
+      quoteAuthor: 'Mark Van Raamsdonk / Ryu-Takayanagi',
+      fullDescription: 'Bekenstein-Hawking kara delik entropi formülünü tüm uzay-zamana genelleştiren Ryu ve Takayanagi, sınır bölgesindeki qubitlerin dolanıklığı sıfırlanırsa içerideki uzay-zaman köprüsünün koptuğunu gösterdi. Uzay-zaman geometrisi, doğrudan kuantum enformasyon dolanıklığından türemektedir.',
+      fullDescriptionEn: 'Generalized Bekenstein-Hawking entropy to arbitrary holographic subsystems, proving that bulk geometry is woven from boundary quantum entanglement.',
+      keyConcepts: ['Ryu-Takayanagi Yüzeyi', 'It from Qubit', 'Dolanıklık Entropisi'],
+      formula: 'S_A = \\frac{\\text{Area}(\\gamma_A)}{4 G_N \\hbar}',
+      impact: 'Kuantum yerçekimi araştırmalarında "It from Qubit" devrimini başlattı.',
+      impactEn: 'Unified quantum information theory and general relativity into the "It from Qubit" paradigm.',
+      tag: 'It From Qubit'
+    },
+    {
+      id: 'er-equals-epr',
+      year: '2013',
+      era: 'digital',
+      title: 'ER = EPR Hipotezi: Solucan Delikleri ve Kuantum Dolanıklık Özdeşliği',
+      titleEn: 'ER = EPR Conjecture: Wormholes Are Quantum Entanglement',
+      thinker: 'Juan Maldacena & Leonard Susskind',
+      summary: 'Genel görelilikteki Einstein-Rosen köprüleri (solucan delikleri, ER) ile kuantum mekaniğindeki Einstein-Podolsky-Rosen dolanıklığının (EPR) aynı fiziksel gerçekliğin iki görünümü olduğunu öne sürdüler.',
+      summaryEn: 'Conjectured that entangled particles (EPR pairs) are connected by microscopic Einstein-Rosen wormhole bridges (ER).',
+      quote: 'Uzayda birbirinden uzak iki dolanık parçacık, mikroskobik bir solucan deliği ile birbirine bağlıdır.',
+      quoteAuthor: 'Leonard Susskind',
+      fullDescription: 'Kara delik ateş duvarı (AMPS firewall) paradoksunu çözmek için geliştirilen ER=EPR hipotezi, Einstein\'ın 1935\'te aynı yıl yazdığı iki makalenin aslında aynı şeyi anlattığını ortaya koydu: Kuantum dolanıklık varsa uzay-zamanda geometrik bağlantı (köprü) vardır.',
+      fullDescriptionEn: 'Proposed a profound equivalence between spacetime connectivity (wormholes) and quantum informational entanglement.',
+      keyConcepts: ['ER = EPR', 'Einstein-Rosen Köprüsü', 'Kuantum Kütleçekim'],
+      formula: '\\text{ER (Solucan Deliği)} \\equiv \\text{EPR (Kuantum Dolanıklık)}',
+      impact: 'Laboratuvarda kuantum işlemciler üzerinde solucan deliği ışınlama simülasyonlarına (Sycamore 2022) öncülük etti.',
+      impactEn: 'Enabled traversable wormhole teleportation protocols simulated on quantum processors.',
+      tag: 'ER = EPR'
+    },
+    {
+      id: 'wolfram-ruliad',
+      year: '2020',
+      era: 'digital',
+      title: 'Wolfram Fizik Projesi: Ruliad ve Hipergraf Ağları',
+      titleEn: 'Wolfram Physics Project: The Ruliad & Hypergraph Networks',
+      thinker: 'Stephen Wolfram',
+      summary: 'Uzay ve zamanın sürekli bir manifold değil; basit algoritmik kurallarla kendini yeniden yazan ayrık bir hipergraf ağı ve tüm olası hesaplamaların kümesi (Ruliad) olduğunu savundu.',
+      summaryEn: 'Proposed that spacetime and quantum mechanics emerge from discrete hypergraph rewriting rules within the Ruliad.',
+      quote: 'Evrenin en temelinde diferansiyel denklemler değil, basit algoritmik kuralların durmaksızın uygulanması vardır.',
+      quoteAuthor: 'Stephen Wolfram',
+      fullDescription: 'Wolfram\'a göre uzay hipergraf düğümlerinden oluşur; zaman ise bu düğümlerin hesaplamalı yeniden yazılma adımlarıdır. Genel görelilik (nedensel değişmezlik) ve kuantum mekaniği (çoklu-yol dallanmaları), tüm olası hesaplama kurallarını içeren "Ruliad" yapısının kaçınılmaz sonuçlarıdır.',
+      fullDescriptionEn: 'Demonstrated how relativistic spacetime curvature and quantum multiway branching emerge naturally from combinatorial hypergraph evolution.',
+      keyConcepts: ['Ruliad', 'Hipergraf Yeniden Yazma', 'Çoklu-Yol (Multiway) Grafiği'],
+      impact: 'Tüm fizik yasalarını pür soyut hesaplama mimarisine indirgeme çabasının modern zirvesi oldu.',
+      impactEn: 'Advanced the computational universe paradigm to encompass both relativity and quantum mechanics.',
+      tag: 'Ruliad & Hipergraf'
+    },
+    {
+      id: 'nobel-2022-entanglement',
+      year: '2022',
+      era: 'digital',
+      title: 'Nobel Fizik Ödülü: Dolanık Fotonlar ve Kuantum Enformasyon Devrimi',
+      titleEn: 'Nobel Prize in Physics: Entangled Photons & Quantum Information',
+      thinker: 'Alain Aspect, John Clauser, Anton Zeilinger',
+      summary: 'Bell eşitsizliklerinin ihlalini deneysel olarak kanıtlayarak yerel gerçekçiliği çürüttüler ve kuantum ışınlama ile kuantum bilgi biliminin kapısını açtılar.',
+      summaryEn: 'Experimentally violated Bell inequalities with entangled photons, disproving local realism and pioneering quantum information science.',
+      quote: 'Kuantum dolanıklık artık felsefi bir tartışma değil; geleceğin bilgi teknolojisini inşa ettiğimiz deneysel bir gerçektir.',
+      quoteAuthor: 'Anton Zeilinger',
+      fullDescription: 'Clauser, Aspect ve Zeilinger\'in on yıllara yayılan kusursuz deneyleri, tüm açıkları (loopholes) kapatarak evrenin yerel gerçekçi olmadığını kesinleştirdi. Zeilinger ayrıca kuantum ışınlamayı (teleportation) gerçekleştirerek bilginin maddeden bağımsız transfer edilebildiğini gösterdi.',
+      fullDescriptionEn: 'Closed experimental loopholes in Bell tests and demonstrated quantum teleportation, cementing information as nature\'s core currency.',
+      keyConcepts: ['Deneysel Bell Testi', 'Kuantum Işınlama (Teleportation)', 'Kuantum Kriptografi'],
+      impact: 'Kuantum internet, kuantum şifreleme ve kuantum bilgisayarlar çağını resmen tescilledi.',
+      impactEn: 'Validated the experimental foundation of quantum computing, cryptography, and teleportation.',
+      tag: '2022 Nobel & Kuantum'
     }
   ],
 
@@ -534,6 +646,28 @@ window.APP_DATA = {
       energyEn: 'Maxwell, Planck, Einstein, Heisenberg, Feynman, Higgs',
       information: 'Shannon, Landauer, Wheeler, Zuse, Bekenstein, Lloyd, Bostrom, Maldacena',
       informationEn: 'Shannon, Landauer, Wheeler, Zuse, Bekenstein, Lloyd, Bostrom, Maldacena'
+    },
+    {
+      id: 'c9',
+      feature: 'Termodinamik & Entropi Niteliği',
+      featureEn: 'Thermodynamics & Nature of Entropy',
+      matter: 'Madde parçacıklarının rastgele konfigürasyonel dağılımı (Boltzmann)',
+      matterEn: 'Configurational microstates of classical particles (Boltzmann)',
+      energy: 'Kullanılamaz ısı enerjisi ve düzensizlik artışı (Clausius dS ≥ dQ/T)',
+      energyEn: 'Degraded thermal energy and dissipation (Clausius dS ≥ dQ/T)',
+      information: 'Eksik bilgi / Von Neumann entropisi; silinmesi zorunlu ısı üretir (Landauer)',
+      informationEn: 'Missing information / Von Neumann entropy; erasure requires heat (Landauer)'
+    },
+    {
+      id: 'c10',
+      feature: 'Evrensel Hesaplama Modeli',
+      featureEn: 'Universal Computing Model',
+      matter: 'Newton mekanik saat mekanizması; dişliler ve çarpışan sert bilyeler',
+      matterEn: 'Clockwork billiard-ball collision computer (Newton)',
+      energy: 'Sürekli dalga denklemleri, faz alanları ve rezonans osilatörleri',
+      energyEn: 'Continuous wave equations, field phase spaces and harmonic oscillators',
+      information: 'Evrensel Kuantum Bilgisayarı; 10¹²² kuantum kapı işlemi ve holografik projeksiyon',
+      informationEn: 'Universal Quantum Computer; 10¹²² gate ops on quantum entanglement networks'
     }
   ],
 
@@ -677,6 +811,76 @@ window.APP_DATA = {
       ],
       explanation: 'Wootters ve Zurek (1982) tarafından ispatlanan Klonlanamazlık Teoremi, kuantum mekaniğindeki üniterlik yasasının bir sonucudur; kuantum bilgisinin benzersizliğini ve kuantum kriptografisinin (QKD) güvenliğini garanti eder.',
       explanationEn: 'The No-Cloning theorem ensures that arbitrary unknown quantum superposition states cannot be duplicated, securing quantum cryptography.'
+    },
+    {
+      id: 11,
+      category: 'Holografik İlke & AdS/CFT',
+      question: 'Juan Maldacena\'nın AdS/CFT uyuşumuna göre (1997) 3 boyutlu uzay ve yerçekimi neyden türemektedir?',
+      questionEn: 'According to Juan Maldacena\'s AdS/CFT correspondence (1997), from what does 3D space and gravity emerge?',
+      options: [
+        { text: 'Sınır yüzeyindeki 2 boyutlu kuantum dolanıklık ağlarından ve enformasyondan', textEn: 'From 2D boundary quantum entanglement networks and information', isCorrect: true },
+        { text: 'Uzayın derinliklerindeki görünmeyen katı kristallerden', textEn: 'From invisible solid crystals in deep space', isCorrect: false },
+        { text: 'Işığın sonsuz hızla bükülmesinden', textEn: 'From light bending at infinite speed', isCorrect: false },
+        { text: 'Sadece karanlık maddeden', textEn: 'Exclusively from dark matter', isCorrect: false }
+      ],
+      explanation: 'AdS/CFT (Anti-de Sitter / Conformal Field Theory) ikiliği, kütleçekimli bir uzayın aslında sınır yüzeyindeki kuantum enformasyon teorisinin holografik bir izdüşümü olduğunu ispatlamıştır.',
+      explanationEn: 'AdS/CFT proved that spacetime geometry with gravity is a holographic projection of boundary quantum entanglement.'
+    },
+    {
+      id: 12,
+      category: 'Kozmik Hesaplama & Termodinamik',
+      question: 'Ryu-Takayanagi formülü (2006) fizikte hangi iki devasa alanı birbirine bağlamıştır?',
+      questionEn: 'Which two major fields of physics does the Ryu-Takayanagi formula (2006) unite?',
+      options: [
+        { text: 'Kuantum Dolanıklık Entropisi ile Uzayzaman Geometrisi (Minimal Yüzey Alanı)', textEn: 'Quantum Entanglement Entropy with Spacetime Geometry (Minimal Surface Area)', isCorrect: true },
+        { text: 'Klasik Newton mekaniği ile kimyasal bağlar', textEn: 'Classical Newtonian mechanics with chemical bonds', isCorrect: false },
+        { text: 'Akustik ses dalgaları ile radyo frekansları', textEn: 'Acoustic sound waves with radio frequencies', isCorrect: false },
+        { text: 'Gezegen yörüngeleri ile nükleer füzyon', textEn: 'Planetary orbits with nuclear fusion', isCorrect: false }
+      ],
+      explanation: 'Ryu-Takayanagi formülü S_A = Area(γ_A) / (4 G_N), sınır bölgesindeki kuantum dolanıklığın uzayzamanın geometrik alanını doğrudan dokuduğunu (It from Qubit) matematiksel olarak gösterdi.',
+      explanationEn: 'The Ryu-Takayanagi formula mathematically demonstrated that spacetime geometry is woven directly from quantum entanglement entropy.'
+    },
+    {
+      id: 13,
+      category: 'Kara Delikler & Astrofizik',
+      question: 'Dönen (Kerr) bir kara deliğin ergoküre bölgesinden Penrose Süreci ile kütlesinin maksimum yüzde kaçı kadar dönme enerjisi çekilebilir?',
+      questionEn: 'Via the Penrose Process in a rotating Kerr black hole\'s ergosphere, up to what percentage of its mass-energy can be extracted?',
+      options: [
+        { text: 'Yaklaşık %29.3 (1 - 1/√2)', textEn: 'Approximately 29.3% (1 - 1/√2)', isCorrect: true },
+        { text: '%100 tamamı', textEn: '100% of its total mass', isCorrect: false },
+        { text: 'Hiçbir enerji çekilemez (%0)', textEn: 'Zero energy can be extracted (0%)', isCorrect: false },
+        { text: 'Yalnızca %0.01', textEn: 'Only 0.01%', isCorrect: false }
+      ],
+      explanation: 'Roger Penrose (1969), maksimum hızda dönen (ekstremal) bir Kerr kara deliğinin indirgenemez kütlesi dışında kalan ~%29.3\'lük dönme enerjisinin ergokürede parçacık bölünmesiyle çekilebileceğini ispatlamıştır.',
+      explanationEn: 'Roger Penrose proved that up to 1 - 1/√2 (~29.29%) of an extremal Kerr black hole\'s mass-energy is rotational energy extractable from its ergosphere.'
+    },
+    {
+      id: 14,
+      category: 'Kuantum Kütleçekim',
+      question: 'Maldacena ve Susskind\'in "ER = EPR" hipotezi neyi özdeşleştirir?',
+      questionEn: 'What does the "ER = EPR" conjecture by Maldacena and Susskind equate?',
+      options: [
+        { text: 'Einstein-Rosen solucan delikleri (ER) ile Kuantum Dolanıklığı (EPR)', textEn: 'Einstein-Rosen wormhole bridges (ER) with Quantum Entanglement (EPR)', isCorrect: true },
+        { text: 'Elektrik alanı (E) ile Manyetik alanı (B)', textEn: 'Electric fields with Magnetic fields', isCorrect: false },
+        { text: 'Özel görelilik ile Klasik termodinamiği', textEn: 'Special relativity with Classical thermodynamics', isCorrect: false },
+        { text: 'Karanlık madde ile Nötrinoları', textEn: 'Dark matter with Neutrinos', isCorrect: false }
+      ],
+      explanation: 'ER=EPR hipotezine göre uzayda birbiriyle kuantum dolanık olan parçacık çiftleri (EPR), mikroskobik düzeyde geçilemeyen Einstein-Rosen solucan deliği köprüleriyle (ER) birbirine bağlıdır.',
+      explanationEn: 'ER=EPR posits that entangled quantum states (EPR pairs) are fundamentally linked through microscopic Einstein-Rosen wormhole geometries.'
+    },
+    {
+      id: 15,
+      category: 'Dijital Fizik & Algoritma',
+      question: 'Stephen Wolfram\'ın Fizik Projesi\'nde "Ruliad" kavramı neyi temsil eder?',
+      questionEn: 'In Stephen Wolfram\'s Physics Project, what does the "Ruliad" represent?',
+      options: [
+        { text: 'Mümkün olan tüm hesaplamalı kuralların ve algoritmik süreçlerin dolanık bütünsel uzayını', textEn: 'The entangled limit of all possible computational rules and algorithmic processes', isCorrect: true },
+        { text: 'Yalnızca Güneş Sistemi içindeki gezegenlerin yörünge tablosunu', textEn: 'Only the orbital table of planets in the Solar System', isCorrect: false },
+        { text: 'Atom çekirdeğindeki proton sayısını', textEn: 'The number of protons inside an atomic nucleus', isCorrect: false },
+        { text: 'Işığın cam içindeki kırılma indisini', textEn: 'The refractive index of light in glass', isCorrect: false }
+      ],
+      explanation: 'Ruliad, olası tüm algoritmik yeniden yazma kurallarının tüm olası başlangıç koşullarıyla çalıştırılmasından doğan nihai hesaplama nesnesidir; insan gözlemciler bu yapının belirli bir kesitini fizik yasaları olarak algılar.',
+      explanationEn: 'The Ruliad is the entangled limit of everything that is computationally possible; physical laws emerge from how bounded observers sample it.'
     }
   ],
 
@@ -780,6 +984,34 @@ window.APP_DATA = {
       defEn: 'Mathematical equivalence between a higher-dimensional gravitational theory in Anti-de Sitter space and a boundary gauge field theory.'
     },
     {
+      term: 'Ryu-Takayanagi Formülü',
+      termEn: 'Ryu-Takayanagi Formula',
+      category: 'cosmology',
+      defTr: 'Holografik uzayda sınır kuantum dolanıklık entropisinin S_A = Area(γ_A) / (4 G_N) minimal yüzey alanına eşit olduğunu kanıtlayan ve uzayzaman geometrisinin dolanıklıktan türediğini gösteren denklem.',
+      defEn: 'Holographic equation S_A = Area(γ_A) / (4 G_N) proving that boundary entanglement entropy equals the minimal surface area in bulk gravity.'
+    },
+    {
+      term: 'ER=EPR Hipotezi',
+      termEn: 'ER=EPR Conjecture',
+      category: 'cosmology',
+      defTr: 'Leonard Susskind ve Juan Maldacena\'nın genel görelilikteki Einstein-Rosen köprüleri (solucan delikleri, ER) ile kuantum dolanıklığın (EPR) aynı fiziksel olgunun iki yüzü olduğunu öne süren tezi.',
+      defEn: 'Susskind & Maldacena conjecture stating that quantum entangled pairs (EPR) are connected through non-traversable wormholes (Einstein-Rosen bridges).'
+    },
+    {
+      term: 'Kerr Ergoküresi & Penrose Süreci',
+      termEn: 'Kerr Ergosphere & Penrose Process',
+      category: 'cosmology',
+      defTr: 'Dönen bir kara deliğin olay ufkunun hemen dışındaki uzay-zamanın sürüklendiği bölge; parçacık bölünmesiyle kara deliğin dönme enerjisinin %29\'a varan oranda çekilebilmesi süreci.',
+      defEn: 'The frame-dragging region outside a rotating Kerr black hole from which up to ~29% of rotational energy can be extracted via particle fission.'
+    },
+    {
+      term: 'Von Neumann Entropisi',
+      termEn: 'Von Neumann Entropy',
+      category: 'information',
+      defTr: 'Kuantum yoğunluk matrisi ρ için S = -Tr(ρ ln ρ) olarak tanımlanan; kuantum dolanıklığı ve eksik bilgi miktarını ölçen temel kuantum entropisi.',
+      defEn: 'Fundamental quantum entropy S = -Tr(ρ ln ρ) measuring entanglement and mixed-state uncertainty of quantum density matrices.'
+    },
+    {
       term: 'Hücresel Otomat (Cellular Automaton)',
       termEn: 'Cellular Automaton',
       category: 'information',
@@ -806,6 +1038,107 @@ window.APP_DATA = {
       category: 'cosmology',
       defTr: 'Nick Bostrom\'un gelişmiş uygarlıkların simülasyon kapasitesi üzerinden neredeyse kesinlikle bir bilgisayar simülasyonunda olduğumuzu öne süren Bayesyen tezi.',
       defEn: 'Nick Bostrom\'s Bayesian argument establishing that we are overwhelmingly likely living in a computer simulation.'
+    },
+    {
+      term: 'Maxwell\'in İblisi (Maxwell\'s Demon)',
+      termEn: 'Maxwell\'s Demon',
+      category: 'information',
+      defTr: 'James Clerk Maxwell\'in 1867\'de kurguladığı; hızlı ve yavaş molekülleri ayırarak entropiyi azaltıyor gibi görünen ancak Landauer ilkesi gereği hafızasını silerken ısı yaydığı için Termodinamik 2. Yasayı ihlal etmeyen düşünce deneyi.',
+      defEn: 'Thought experiment where a microscopic entity sorts molecules by speed; resolved via Landauer\'s Principle proving memory erasure restores thermodynamic entropy.'
+    },
+    {
+      term: 'Ruliad & Hipergraf Ağı',
+      termEn: 'Ruliad & Hypergraph Network',
+      category: 'information',
+      defTr: 'Stephen Wolfram\'ın uzayzamanı ayrık düğümlerin yeniden yazıldığı bir hipergraf olarak modellediği ve mümkün olan tüm hesaplamaların bütününü (Ruliad) temel varlık saydığı kuram.',
+      defEn: 'Wolfram\'s framework modeling spacetime as discrete evolving hypergraphs embedded within the Ruliad—the entangled limit of all possible computations.'
+    }
+  ],
+
+  articles: [
+    {
+      id: 'doc-01',
+      path: 'docs/01_antik_cag_ve_arkhe.md',
+      badgeColor: 'amber',
+      pagesTr: 'Bölüm 1 • Antik Felsefe & Arkhe',
+      pagesEn: 'Chapter 1 • Ancient Philosophy & Arche',
+      titleTr: 'Antik Çağ ve Arkhe Arayışı: Miletos\'tan Atomos\'a',
+      titleEn: 'Ancient Era & Arche Inquiry: From Miletus to Atomos',
+      summaryTr: 'Miletos Okulu, Thales\'in Suyu, Anaksimandros\'un Apeiron\'u, Herakleitos\'un Logos\'u, Pisagor\'un Sayıları, Demokritos\'un Atomos hipotezi ve Aristoteles\'in Hilomorfizmi.',
+      summaryEn: 'Milesian school, Thales, Anaximander\'s Apeiron, Heraclitus\'s Logos, Pythagoras\'s Numbers, Democritus\'s Atomos, and Aristotle\'s Hylomorphism.',
+      formula: '\\text{Arkhe} \\longrightarrow \\text{Apeiron} \\longrightarrow \\text{Logos} \\longrightarrow \\text{Atomos} + \\text{Kenos}',
+      contentTr: `İnsanlığın "Evren neyden yapılmıştır?" sorusuna mitolojiden bağımsız, rasyonel ve gözleme dayalı yanıt arayışı MÖ 6. yüzyılda Batı Anadolu kıyılarında (İyonya / Miletos) başlamıştır.\n\n1. Thales (Su): Faz geçişleriyle (katı-sıvı-gaz) tüm çeşitliliği açıklayan ilk monist model.\n2. Anaksimandros (Apeiron): Belirli bir element yerine tüm zıtlıkların kendisinden simetri kırılmasıyla ayrıştığı sonsuz, sınırsız potansiyel töz (Modern kuantum vakumunun felsefi atası).\n3. Herakleitos (Ateş ve Logos): Evreni statik bir nesne değil, evrensel bir yasa/algoritma (Logos) tarafından yönetilen dinamik bir süreç (Panta Rhei) olarak tanımladı.\n4. Pisagor (Sayı ve Harmoni): Fiziksel gerçekliğin temelini matematiksel oranlara ve geometriye indirgedi.\n5. Demokritos (Atomos ve Boşluk): Maddenin sonsuza dek bölünemeyeceğini, bölünemez geometrik yapıtaşları (Atomos) ve boşluktan (Kenos) oluştuğunu öngördü.\n6. Aristoteles (Hilomorfizm): Varlığı Hyle (Donanım/Madde) ve Morphe (Yazılım/Form) ikiliğiyle açıkladı.`,
+      contentEn: `Humanity's rational inquiry into the fundamental constituent of the cosmos ("Arche") began in 6th-century BCE Ionia (Miletus).\n\n1. Thales (Water): First monistic natural model observing phase transitions.\n2. Anaximander (Apeiron): Proposed an indefinite, boundless reservoir prior to all physical differentiation—prefiguring the quantum vacuum.\n3. Heraclitus (Fire & Logos): Framed reality not as static stuff, but continuous flux governed by a cosmic informational law (Logos).\n4. Pythagoras (Number): Declared mathematical ratios and harmonic geometry to be the true substance of nature.\n5. Democritus (Atomos & Void): Deduced indivisible discrete particles moving in vacuum.\n6. Aristotle (Hylomorphism): Synthesized prime matter (Hyle / hardware) and organizing form (Morphe / software).`
+    },
+    {
+      id: 'doc-02',
+      path: 'docs/02_kuantum_mekanigi_ve_alan_teorisi.md',
+      badgeColor: 'purple',
+      pagesTr: 'Bölüm 2 • Modern Fizik & QFT',
+      pagesEn: 'Chapter 2 • Modern Physics & QFT',
+      titleTr: 'Modern Fizik & Kuantum Alan Teorisi (QFT)',
+      titleEn: 'Modern Physics & Quantum Field Theory (QFT)',
+      summaryTr: 'Einstein E=mc² kütle-enerji eşdeğerliği, Planck kuantumu, Schrödinger dalga fonksiyonu, Standart Model parçacık tablosu ve Higgs alanı.',
+      summaryEn: 'Einstein E=mc², Planck quanta, Schrödinger wavefunction, Standard Model fields, and the Higgs mechanism.',
+      formula: '\\mathcal{L}_{\\text{SM}} = -\\frac{1}{4}F_{\\mu\\nu}F^{\\mu\\nu} + i\\bar{\\psi}\\gamma^\\mu D_\\mu \\psi + |D_\\mu \\phi|^2 - V(\\phi)',
+      contentTr: `20. yüzyıl fiziği, Demokritos ve Newton'un "katı bilye" atom modelini yıkarak maddenin aslında yoğunlaşmış enerji ve kuantum alanlarının titreşimi olduğunu kanıtladı.\n\n• Özel ve Genel Görelilik (Einstein): Kütle ve enerji E = mc² ile tek bir korunum yasasında birleşti. Uzay-zaman sabit bir sahne değil, enerji-momentum tensörüyle bükülen dinamik bir 4D geometridir.\n• Kuantum Devrimi (Planck, Heisenberg, Schrödinger): Enerji kesikli paketler (kuantum) halinde alınıp verilir. Ölçüm öncesinde sistemler olasılık dalga fonksiyonu (Ψ) süperpozisyonundadır.\n• Kuantum Alan Teorisi (QFT) ve Standart Model: Doğada temel olan parçacıklar değil, uzayın tamamını dolduran sürekli kuantum alanlarıdır. Elektron, elektron alanının lokalize bir uyarılmasıdır (kuantumudur). 6 kuark, 6 lepton, 4 kuvvet bozonu ve Higgs alanı görünür evrenin %5'ini oluşturur.`,
+      contentEn: `20th-century physics demolished the classical billiard-ball particle ontology, proving that matter is concentrated energy and localized excitations of quantum fields.\n\n• Relativity (Einstein): Unified mass and energy via E = mc² and revealed gravity as dynamic spacetime curvature.\n• Quantum Mechanics: Energy is quantized (E = hν), and systems evolve as complex probability amplitudes (Ψ) bounded by Heisenberg uncertainty.\n• Quantum Field Theory (QFT): Fundamental reality consists not of particles, but of pervasive quantum fields. Particles are quantized ripples of these fields interacting via gauge symmetries and the Higgs field.`
+    },
+    {
+      id: 'doc-03',
+      path: 'docs/03_dijital_fizik_ve_it_from_bit.md',
+      badgeColor: 'cyan',
+      pagesTr: 'Bölüm 3 • Dijital Fizik & Enformasyon',
+      pagesEn: 'Chapter 3 • Digital Physics & Information',
+      titleTr: 'Dijital Fizik, "It from Bit" ve Holografik Evren',
+      titleEn: 'Digital Physics, "It from Bit" & the Holographic Universe',
+      summaryTr: 'Shannon entropisi, Landauer ilkesi, John Wheeler, Konrad Zuse hücresel otomatı, Bekenstein-Hawking entropisi, Seth Lloyd ve Bostrom trilemması.',
+      summaryEn: 'Shannon entropy, Landauer principle, Wheeler, Zuse cellular automata, Bekenstein-Hawking bound, Seth Lloyd, and Bostrom.',
+      formula: 'S_{BH} = \\frac{k_B A}{4 \\ell_P^2}, \\quad E_{\\text{silme}} \\ge k_B T \\ln 2, \\quad N_{\\text{op}} \\sim 10^{122}',
+      contentTr: `Maddenin ve enerjinin de altında yatan en derin ontolojik katman "Bilgi" (Enformasyon) ve "Hesaplama"dır.\n\n1. Shannon & Landauer ("Bilgi Fizikseldir"): Bilgi soyut değildir; 1 bitlik bilginin silinmesi çevreye en az k_B T ln 2 ısı yayar.\n2. John Wheeler ("It from Bit"): Tüm fiziksel varlıklar (It), gözlemci-katılımcı kuantum ölçümlerinin ikili evet/hayır yanıtlarından (Bit) doğar.\n3. Konrad Zuse & Stephen Wolfram: Uzay-zaman ayrık hücrelerden / hipergraflardan oluşan devasa bir algoritmik otomat olarak modellenir.\n4. Holografik İlke & AdS/CFT & Ryu-Takayanagi: Bir uzay hacmindeki maksimum bilgi hacimle değil, sınır yüzey alanıyla (A / 4ℓ_P²) orantılıdır. 3 boyutlu yerçekimli uzayzaman, 2 boyutlu sınır yüzeyindeki kuantum dolanıklık ağlarından (It from Qubit) türer.\n5. Seth Lloyd & Nick Bostrom: Gözlemlenebilir evren Büyük Patlamadan beri ~10¹²² kuantum işlemi yapmış, ~10⁹² bitlik bir kuantum bilgisayarıdır.`,
+      contentEn: `Beneath matter and energy lies the deepest ontological layer: Information and Computation.\n\n1. Shannon & Landauer ("Information is Physical"): Erasing 1 bit requires at least k_B T ln 2 thermal dissipation.\n2. Wheeler ("It from Bit"): Physical entities emerge from binary quantum measurement queries.\n3. Zuse & Wolfram: Spacetime modeled as discrete cellular automata and evolving hypergraphs (Ruliad).\n4. Holographic Principle, AdS/CFT & Ryu-Takayanagi: Maximum information scales with boundary surface area (A / 4ℓ_P²); bulk spacetime geometry is woven from boundary quantum entanglement ("It from Qubit").\n5. Seth Lloyd & Bostrom: The universe has executed ~10¹²² quantum operations on ~10⁹² bits since the Big Bang.`
+    },
+    {
+      id: 'doc-04',
+      path: 'docs/04_matematiksel_modeller_ve_formuller.md',
+      badgeColor: 'emerald',
+      pagesTr: 'Bölüm 4 • Matematiksel Formüller',
+      pagesEn: 'Chapter 4 • Mathematical Equations',
+      titleTr: 'Matematiksel Modeller, Sabitler ve Denklemler',
+      titleEn: 'Mathematical Models, Constants & Equations',
+      summaryTr: 'SI evrensel fizik sabitleri, Schwarzschild ve Kerr kara delik denklemleri, Penrose süreci, Ryu-Takayanagi, CHSH ve Margolus-Levitin formülleri.',
+      summaryEn: 'SI constants, Schwarzschild & Kerr black holes, Penrose process, Ryu-Takayanagi, Bell-CHSH, and Margolus-Levitin equations.',
+      formula: 'r_\\pm = r_g \\pm \\sqrt{r_g^2 - a^2}, \\quad S_A = \\frac{c}{3}\\ln\\left(\\frac{2L}{\\epsilon}\\sin\\frac{\\theta}{2}\\right)',
+      contentTr: `Projedeki tüm simülatörlerin ve CLI aracının arkasında çalışan tam matematiksel denklemler:\n\n• Kütle-Enerji ve Kuantum: E = mc², E = hν, Δx·Δp ≥ ℏ/2\n• Schwarzschild & Kerr Kara Deliği: r_s = 2GM/c², Dönen Kerr ufukları r_± = GM/c² ± √((GM/c²)² - a²), Penrose maksimum enerji verimi η_max = 1 - 1/√2 ≈ %29.29.\n• Bekenstein-Hawking Entropisi: S_BH = k_B c³ A / (4 G ℏ), I_bits = A / (4 ℓ_P² ln 2).\n• Landauer ve Shannon: H(X) = -∑ p_i log₂ p_i, E_min = k_B T ln 2.\n• Margolus-Levitin Kuantum Hız Sınırı: R_max = 2E / (π ℏ) işlem/saniye.\n• Bell-CHSH Eşitsizliği: E(θ_A, θ_B) = -cos(2(θ_A - θ_B)), Klasik S ≤ 2, Kuantum Tsirelson S = 2√2 ≈ 2.828.\n• Ryu-Takayanagi Holografik Entropi (AdS₃/CFT₂): S_A = (c/3) ln((2L/ε) sin(θ_A/2)).`,
+      contentEn: `Exact mathematical equations powering the interactive simulators and Python CLI:\n\n• Mass-Energy & Quantum: E = mc², E = hν, Δx·Δp ≥ ℏ/2\n• Schwarzschild & Kerr Black Holes: r_s = 2GM/c², Kerr horizons r_± = r_g ± √(r_g² - a²), Penrose process max rotational extraction η_max ≈ 29.29%.\n• Bekenstein-Hawking Entropy: S_BH = k_B c³ A / (4 G ℏ), I_bits = A / (4 ℓ_P² ln 2).\n• Landauer & Shannon: H(X) = -∑ p_i log₂ p_i, E_min = k_B T ln 2.\n• Margolus-Levitin Speed Limit: R_max = 2E / (π ℏ) ops/s.\n• Bell-CHSH Correlation: E(θ_A, θ_B) = -cos(2(θ_A - θ_B)), S_max = 2√2 ≈ 2.828.\n• Ryu-Takayanagi Holographic Entropy: S_A = (c/3) ln((2L/ε) sin(θ_A/2)).`
+    },
+    {
+      id: 'doc-05',
+      path: 'docs/05_kaynakca_ve_okuma_listesi.md',
+      badgeColor: 'pink',
+      pagesTr: 'Bölüm 5 • Akademik Kaynakça',
+      pagesEn: 'Chapter 5 • Academic Bibliography',
+      titleTr: 'Birincil Makaleler, Kaynakça ve Okuma Listesi',
+      titleEn: 'Primary Papers, Bibliography & Reading List',
+      summaryTr: 'Wheeler (1989), Landauer (1961), Bekenstein (1973), Maldacena (1997), Bostrom (2003), Lloyd (2000) ve Wolfram (2020) orijinal referansları.',
+      summaryEn: 'Original citations for Wheeler, Landauer, Bekenstein, Hawking, Maldacena, Ryu-Takayanagi, Bostrom, Lloyd, and Wolfram.',
+      formula: '\\text{BibTeX / DOI: Phys. Rev., Nature, Oxford Phil. Quart., JHEP}',
+      contentTr: `Temel Birincil Akademik Makaleler ve Kitaplar:\n\n1. Landauer, R. (1961). "Irreversibility and Heat Generation in the Computing Process." IBM Journal of Research and Development, 5(3), 183-191.\n2. Bell, J. S. (1964). "On the Einstein Podolsky Rosen Paradox." Physics Physique Физика, 1(3), 195.\n3. Zuse, K. (1969). "Rechnender Raum" (Calculating Space). MIT Technical Translation.\n4. Bekenstein, J. D. (1973). "Black Holes and Entropy." Physical Review D, 7(8), 2333.\n5. Wheeler, J. A. (1990). "Information, Physics, Quantum: The Search for Links." Complexity, Entropy, and the Physics of Information.\n6. Maldacena, J. (1998). "The Large N Limit of Superconformal Field Theories and Supergravity." Adv. Theor. Math. Phys. 2, 231.\n7. Lloyd, S. (2000). "Ultimate physical limits to computation." Nature, 406, 1047–1054.\n8. Bostrom, N. (2003). "Are You Living in a Computer Simulation?" Philosophical Quarterly, 53(211), 243-255.\n9. Ryu, S., & Takayanagi, T. (2006). "Holographic Derivation of Entanglement Entropy from AdS/CFT." Physical Review Letters, 96(18), 181602.\n10. Maldacena, J., & Susskind, L. (2013). "Cool horizons for entangled black holes (ER=EPR)." Fortschritte der Physik, 61(9), 781-811.`,
+      contentEn: `Primary Academic Literature & Foundational Texts:\n\n1. Landauer, R. (1961). "Irreversibility and Heat Generation in the Computing Process." IBM J. Res. Dev.\n2. Bell, J. S. (1964). "On the Einstein Podolsky Rosen Paradox." Physics.\n3. Zuse, K. (1969). "Rechnender Raum" (Calculating Space).\n4. Bekenstein, J. D. (1973). "Black Holes and Entropy." Phys. Rev. D.\n5. Wheeler, J. A. (1990). "Information, Physics, Quantum: The Search for Links."\n6. Maldacena, J. (1998). "The Large N Limit of Superconformal Field Theories and Supergravity."\n7. Lloyd, S. (2000). "Ultimate physical limits to computation." Nature.\n8. Bostrom, N. (2003). "Are You Living in a Computer Simulation?" Phil. Quart.\n9. Ryu, S., & Takayanagi, T. (2006). "Holographic Derivation of Entanglement Entropy from AdS/CFT." Phys. Rev. Lett.\n10. Maldacena, J., & Susskind, L. (2013). "Cool horizons for entangled black holes (ER=EPR)."`
+    },
+    {
+      id: 'doc-06',
+      path: 'docs/06_kavram_sozlugu_ve_terimler.md',
+      badgeColor: 'gold',
+      pagesTr: 'Bölüm 6 • Ansiklopedik Sözlük',
+      pagesEn: 'Chapter 6 • Encyclopedic Glossary',
+      titleTr: 'Kapsamlı Kozmik & Kuantum Kavram Sözlüğü',
+      titleEn: 'Comprehensive Cosmic & Quantum Conceptual Glossary',
+      summaryTr: 'Antik felsefe, kuantum mekaniği, enformasyon termodinamiği ve holografik kozmolojiye ait 24 temel kavramın ansiklopedik tanımları.',
+      summaryEn: 'Encyclopedic definitions of 24 foundational terms across ancient ontology, quantum mechanics, information theory, and holography.',
+      formula: 'S(\\rho) = -\\text{Tr}(\\rho \\ln \\rho) \\quad \\& \\quad I(A:B) = S(A) + S(B) - S(AB)',
+      contentTr: `Bu doküman, projede yer alan 4 ana disiplindeki (Antik Doğa Felsefesi, Kuantum Mekaniği, Enformasyon Teorisi ve Holografik Kozmoloji) 24 kritik terimin etimolojik kökenlerini, matematiksel formüllerini ve modern fizikteki karşılıklarını sistematik olarak inceler.\n\n• Antik Ontoloji: Arkhe, Apeiron, Atomos, Kenos, Logos, Panta Rhei, Hilomorfizm (Hyle & Morphe).\n• Kuantum Fiziği: Planck Ölçeği, Süperpozisyon, Dalga Fonksiyonu Çöküşü, Kuantum Dolanıklığı (EPR), Klonlanamazlık Teoremi, Margolus-Levitin Sınırı.\n• Enformasyon & Termodinamik: Bit & Qubit, Shannon Entropisi, Von Neumann Entropisi, Landauer İlkesi, Maxwell'in İblisi, Hücresel Otomat, Ruliad.\n• Kozmoloji & Holografi: Bekenstein Sınırı, Bekenstein-Hawking Kara Delik Entropisi, Kerr Ergoküresi & Penrose Süreci, Holografik İlke, AdS/CFT İkiliği, Ryu-Takayanagi Formülü, ER=EPR, Simülasyon Trilemması.`,
+      contentEn: `Systematically examines 24 core concepts spanning four disciplines:\n\n• Ancient Ontology: Arche, Apeiron, Atomos, Logos, Hylomorphism.\n• Quantum Physics: Planck Scale, Superposition, Entanglement, No-Cloning Theorem, Margolus-Levitin Bound.\n• Information & Thermodynamics: Qubit, Shannon & Von Neumann Entropy, Landauer's Principle, Maxwell's Demon, Cellular Automata, Ruliad.\n• Cosmology & Holography: Bekenstein Bound, Kerr Ergosphere & Penrose Process, Holographic Principle, AdS/CFT, Ryu-Takayanagi Formula, ER=EPR, Simulation Argument.`
     }
   ]
 };
