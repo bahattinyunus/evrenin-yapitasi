@@ -21,9 +21,9 @@ Bu proje; insanlığın evrenin temel yapıtaşlarına dair anlayışının **"M
 
 ---
 
-## 🎨 Görsel Galeri & Tematik Bannerlar
+## 🎨 Görsel Galeri & Tematik Bannerlar (8 HD Görsel)
 
-Portal genelinde yer alan 5 yüksek çözünürlüklü tematik görsel:
+Portal genelinde yer alan 8 yüksek çözünürlüklü (`1280 × 500`) tematik görsel:
 
 | 🌌 1. Maddeden Yazılıma Büyük Dönüşüm | 🏛️ 2. Antik Doğa Felsefesi & Arkhe |
 | :---: | :---: |
@@ -33,9 +33,13 @@ Portal genelinde yer alan 5 yüksek çözünürlüklü tematik görsel:
 | :---: | :---: |
 | ![Kuantum Alanları](assets/banners/banner_3_quantum_fields.png) | ![It from Bit](assets/banners/banner_4_it_from_bit.png) |
 
-| 🌐 5. Simüle Multiverse & Kuantum Hesaplama |
-| :---: |
-| ![Simüle Evren](assets/banners/banner_5_simulated_universe.png) |
+| 🌐 5. Simüle Multiverse & Kuantum Hesaplama | 🌀 6. Kerr Dönen Kara Delik & Penrose Ergoküresi |
+| :---: | :---: |
+| ![Simüle Evren](assets/banners/banner_5_simulated_universe.png) | ![Kerr Kara Delik](assets/banners/banner_6_kerr_ergosphere.png) |
+
+| 🕸️ 7. AdS/CFT Poincaré Diski & Ryu-Takayanagi Ağı | 🧬 8. Wolfram Ruliad Hipergraf & ER=EPR Köprüsü |
+| :---: | :---: |
+| ![AdS/CFT Holografi](assets/banners/banner_7_adscft_holography.png) | ![Ruliad ve ER=EPR](assets/banners/banner_8_ruliad_hypergraph.png) |
 
 ---
 

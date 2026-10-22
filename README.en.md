@@ -21,9 +21,9 @@ This platform documents the evolution of our understanding of reality across thr
 
 ---
 
-## 🎨 Visual Gallery & Thematic Banners
+## 🎨 Visual Gallery & Thematic Banners (8 HD Visuals)
 
-The 5 high-resolution thematic banners embedded across the portal:
+The 8 high-resolution (`1280 × 500`) thematic banners embedded across the portal:
 
 | 🌌 1. Grand Evolution from Matter to Bit | 🏛️ 2. Ancient Natural Philosophy & Arche |
 | :---: | :---: |
@@ -33,9 +33,13 @@ The 5 high-resolution thematic banners embedded across the portal:
 | :---: | :---: |
 | ![Quantum Fields](assets/banners/banner_3_quantum_fields.png) | ![It from Bit](assets/banners/banner_4_it_from_bit.png) |
 
-| 🌐 5. Simulated Multiverse & Quantum Computing |
-| :---: |
-| ![Simulated Universe](assets/banners/banner_5_simulated_universe.png) |
+| 🌐 5. Simulated Multiverse & Quantum Computing | 🌀 6. Kerr Rotating Black Hole & Ergosphere |
+| :---: | :---: |
+| ![Simulated Universe](assets/banners/banner_5_simulated_universe.png) | ![Kerr Black Hole](assets/banners/banner_6_kerr_ergosphere.png) |
+
+| 🕸️ 7. AdS/CFT Poincaré Disk & Ryu-Takayanagi Web | 🧬 8. Wolfram Ruliad Hypergraph & ER=EPR Bridge |
+| :---: | :---: |
+| ![AdS/CFT Holography](assets/banners/banner_7_adscft_holography.png) | ![Ruliad & ER=EPR](assets/banners/banner_8_ruliad_hypergraph.png) |
 
 ---
 

@@ -330,10 +330,184 @@ def generate_banner_5():
     print(f"Saved: {out_path}")
 
 
+# =========================================================================
+# BANNER 6: Kerr Rotating Black Hole, Ergosphere & Penrose Process
+# =========================================================================
+def generate_banner_6():
+    print("Generating Banner 6: Kerr Black Hole & Ergosphere...")
+    w, h = WIDTH, HEIGHT
+    xx, yy = np.meshgrid(np.linspace(-w / h * 1.4, w / h * 1.4, w), np.linspace(-1.4, 1.4, h))
+    r_dist = np.sqrt(xx**2 + yy**2)
+    angle = np.arctan2(yy, xx)
+
+    # Frame-dragging spiral distortion around Kerr black hole
+    frame_drag = angle + 1.65 / (r_dist + 0.22)
+    swirl = (np.sin(frame_drag * 5.0) + 1.0) * 0.5
+    ergo_halo = np.exp(-((r_dist - 0.52) ** 2) / 0.08)
+    accretion = np.exp(-((yy * 2.8) ** 2) / (0.18 + 0.3 * r_dist)) * np.exp(-r_dist * 0.75)
+
+    # Relativistic polar jet along vertical axis (Penrose energy extraction)
+    jet = np.exp(-(xx ** 2) / (0.015 + 0.08 * (yy ** 2))) * (np.abs(yy) > 0.28) * np.exp(-np.abs(yy) * 0.8)
+
+    noise = create_fractal_noise(w, h, octaves=5, scale=0.005, seed=606)
+
+    r = np.clip(12 + ergo_halo * 230 + accretion * 255 * (0.6 + 0.4 * swirl) + jet * 180 + (noise ** 1.6) * 45, 0, 255)
+    g = np.clip(6 + ergo_halo * 75 + accretion * 140 * swirl + jet * 230 + (noise ** 1.8) * 35, 0, 255)
+    b = np.clip(20 + ergo_halo * 190 + accretion * 90 + jet * 255 + (noise ** 1.3) * 110, 0, 255)
+
+    # Inner Kerr Event Horizon shadow (oblate/compressed)
+    horizon_mask = (xx ** 2 + (yy * 1.12) ** 2) < (0.31 ** 2)
+    r[horizon_mask] = 2
+    g[horizon_mask] = 2
+    b[horizon_mask] = 6
+
+    img = Image.fromarray(np.stack([r.astype(np.uint8), g.astype(np.uint8), b.astype(np.uint8)], axis=-1), 'RGB')
+    draw_starfield(img, num_stars=340, seed=601)
+
+    draw = ImageDraw.Draw(img, 'RGBA')
+    cx, cy = w // 2, h // 2
+    # Ergosphere outer oblate boundary and inner horizon rings
+    draw.ellipse([cx - 190, cy - 115, cx + 190, cy + 115], outline=(157, 78, 221, 140), width=2)
+    draw.ellipse([cx - 112, cy - 100, cx + 112, cy + 100], outline=(0, 242, 254, 190), width=2)
+
+    out_path = os.path.join(OUTPUT_DIR, "banner_6_kerr_ergosphere.png")
+    img.save(out_path, "PNG", quality=95)
+    print(f"Saved: {out_path}")
+
+
+# =========================================================================
+# BANNER 7: AdS/CFT Holography & Ryu-Takayanagi Entanglement Web
+# =========================================================================
+def generate_banner_7():
+    print("Generating Banner 7: AdS/CFT Holography & Ryu-Takayanagi...")
+    w, h = WIDTH, HEIGHT
+    xx, yy = np.meshgrid(np.linspace(-w / h, w / h, w), np.linspace(-1.0, 1.0, h))
+    r_dist = np.sqrt(xx**2 + yy**2)
+
+    noise = create_fractal_noise(w, h, octaves=5, scale=0.004, seed=707)
+
+    # Hyperbolic Poincare disk glow in center + deep holographic bulk
+    disk_glow = np.exp(-((r_dist - 0.78) ** 2) / 0.025)
+    interior = (r_dist < 0.78) * (1.0 - (r_dist / 0.78) ** 2)
+
+    r = np.clip(8 + interior * 35 + disk_glow * 40 + (noise ** 1.7) * 55, 0, 255)
+    g = np.clip(14 + interior * 110 + disk_glow * 235 + (noise ** 1.4) * 125, 0, 255)
+    b = np.clip(28 + interior * 185 + disk_glow * 255 + (noise ** 1.2) * 210, 0, 255)
+
+    img = Image.fromarray(np.stack([r.astype(np.uint8), g.astype(np.uint8), b.astype(np.uint8)], axis=-1), 'RGB')
+    draw_starfield(img, num_stars=320, seed=702)
+
+    draw = ImageDraw.Draw(img, 'RGBA')
+    cx, cy = w // 2, h // 2
+    radius_px = int(h * 0.39)
+
+    # Draw MERA-like hyperbolic tensor network layers inside disk
+    layers = [0.28, 0.55, 0.80, 1.0]
+    counts = [6, 12, 24, 48]
+    ring_pts = []
+    for rad_ratio, cnt in zip(layers, counts):
+        rr = radius_px * rad_ratio
+        pts = []
+        for i in range(cnt):
+            ang = (2 * math.pi * i) / cnt
+            pts.append((int(cx + rr * math.cos(ang)), int(cy + rr * math.sin(ang))))
+        ring_pts.append(pts)
+
+    for l_idx in range(len(ring_pts) - 1):
+        inner = ring_pts[l_idx]
+        outer = ring_pts[l_idx + 1]
+        for i, p1 in enumerate(inner):
+            p2 = outer[(i * 2) % len(outer)]
+            p3 = outer[(i * 2 + 1) % len(outer)]
+            draw.line([p1, p2], fill=(0, 242, 254, 70), width=1)
+            draw.line([p1, p3], fill=(157, 78, 221, 70), width=1)
+
+    # Draw Ryu-Takayanagi minimal geodesic arcs across Poincaré disk
+    for pair in [(0, 16), (6, 22), (12, 30), (34, 46)]:
+        p_start = ring_pts[-1][pair[0]]
+        p_end = ring_pts[-1][pair[1]]
+        steps = 40
+        curve = []
+        for s in range(steps + 1):
+            t = s / steps
+            # Quadratic Bezier pulled toward bulk center
+            bx = (1 - t) ** 2 * p_start[0] + 2 * (1 - t) * t * cx + t ** 2 * p_end[0]
+            by = (1 - t) ** 2 * p_start[1] + 2 * (1 - t) * t * cy + t ** 2 * p_end[1]
+            curve.append((int(bx), int(by)))
+        for s in range(len(curve) - 1):
+            draw.line([curve[s], curve[s + 1]], fill=(247, 37, 133, 210), width=3)
+
+    draw.ellipse([cx - radius_px, cy - radius_px, cx + radius_px, cy + radius_px], outline=(0, 242, 254, 220), width=3)
+
+    out_path = os.path.join(OUTPUT_DIR, "banner_7_adscft_holography.png")
+    img.save(out_path, "PNG", quality=95)
+    print(f"Saved: {out_path}")
+
+
+# =========================================================================
+# BANNER 8: Wolfram Ruliad Hypergraph & ER=EPR Wormhole Network
+# =========================================================================
+def generate_banner_8():
+    print("Generating Banner 8: Ruliad Hypergraph & ER=EPR Wormhole...")
+    w, h = WIDTH, HEIGHT
+    xx, yy = np.meshgrid(np.linspace(-2.2, 2.2, w), np.linspace(-1.0, 1.0, h))
+
+    # Two entangled wormhole mouths (left & right) connected by an Einstein-Rosen bridge
+    d_left = np.sqrt((xx + 0.95) ** 2 + yy ** 2)
+    d_right = np.sqrt((xx - 0.95) ** 2 + yy ** 2)
+    bridge = np.exp(-(yy ** 2) / (0.04 + 0.15 * (xx ** 2))) * (np.abs(xx) < 1.1)
+    nodes_glow = np.exp(-d_left * 2.8) + np.exp(-d_right * 2.8)
+
+    noise = create_fractal_noise(w, h, octaves=5, scale=0.004, seed=808)
+
+    r = np.clip(10 + nodes_glow * 190 + bridge * 120 + (noise ** 1.5) * 60, 0, 255)
+    g = np.clip(12 + nodes_glow * 90 + bridge * 230 + (noise ** 1.4) * 140, 0, 255)
+    b = np.clip(24 + nodes_glow * 255 + bridge * 245 + (noise ** 1.2) * 210, 0, 255)
+
+    img = Image.fromarray(np.stack([r.astype(np.uint8), g.astype(np.uint8), b.astype(np.uint8)], axis=-1), 'RGB')
+    draw_starfield(img, num_stars=360, seed=803)
+
+    draw = ImageDraw.Draw(img, 'RGBA')
+    np.random.seed(808)
+    left_cx, right_cx, cy = int(w * 0.28), int(w * 0.72), h // 2
+
+    # Generate hypergraph clusters around both wormhole mouths
+    clusters = []
+    for center_x in [left_cx, right_cx]:
+        pts = []
+        for _ in range(28):
+            ang = np.random.rand() * 2 * math.pi
+            rad = np.random.rand() * 135 + 15
+            pts.append((int(center_x + rad * math.cos(ang)), int(cy + rad * 0.75 * math.sin(ang))))
+        clusters.append(pts)
+
+    for pts in clusters:
+        for i in range(len(pts)):
+            for j in range(i + 1, len(pts)):
+                dist = math.hypot(pts[i][0] - pts[j][0], pts[i][1] - pts[j][1])
+                if dist < 85:
+                    draw.line([pts[i], pts[j]], fill=(0, 242, 254, 95), width=1)
+        for p in pts:
+            draw.ellipse([p[0] - 3, p[1] - 3, p[0] + 3, p[1] + 3], fill=(6, 214, 160, 220))
+
+    # ER=EPR Wormhole entanglement bridge lines connecting left and right hypergraphs
+    for k in range(10):
+        p_l = clusters[0][k]
+        p_r = clusters[1][k]
+        draw.line([p_l, p_r], fill=(255, 209, 102, 110), width=1)
+
+    out_path = os.path.join(OUTPUT_DIR, "banner_8_ruliad_hypergraph.png")
+    img.save(out_path, "PNG", quality=95)
+    print(f"Saved: {out_path}")
+
+
 if __name__ == "__main__":
     generate_banner_1()
     generate_banner_2()
     generate_banner_3()
     generate_banner_4()
     generate_banner_5()
-    print("All 5 photorealistic banners successfully generated!")
+    generate_banner_6()
+    generate_banner_7()
+    generate_banner_8()
+    print("All 8 photorealistic banners successfully generated!")
